@@ -247,10 +247,18 @@
 
     .problems-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .problems-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .problems-grid { grid-template-columns: 1fr; }
     }
 
     .problem-card {
@@ -707,38 +715,48 @@
   <div class="section-header centered">
     <div class="section-tag">O Diagnóstico</div>
     <h2 class="section-title">O que acontece quando o comercial<br/><em>não tem processo</em></h2>
-    <p class="section-lead">A maioria das empresas perde vendas não por falta de produto — mas por falta de organização. Reconhece algum desses cenários?</p>
+    <p class="section-lead">A maioria das empresas perde vendas por falta de organização, não de produto. Você se identifica com algum desses cenários?</p>
   </div>
   <div class="problems-grid">
     <div class="problem-card">
       <div class="problem-icon">📉</div>
       <h3>Funil invisível</h3>
-      <p>Ninguém sabe quantos leads estão em cada etapa. Cada vendedor trabalha do seu jeito e o gestor não consegue acompanhar.</p>
+      <p>Ninguém sabe quantos leads estão em cada etapa. Cada vendedor trabalha do seu jeito. O gestor não enxerga nada.</p>
     </div>
     <div class="problem-card">
       <div class="problem-icon">🔁</div>
       <h3>Follow-up esquecido</h3>
-      <p>Leads quentes esfriando porque o time não tem rotina de acompanhamento. Oportunidades caindo no vão.</p>
+      <p>Lead quente hoje, silêncio amanhã. Sem rotina de acompanhamento, a oportunidade esfria e some.</p>
     </div>
     <div class="problem-card">
       <div class="problem-icon">📊</div>
       <h3>Gestão no escuro</h3>
-      <p>Decisões baseadas em feeling, não em dados. Sem métricas confiáveis não há como melhorar o que não se enxerga.</p>
+      <p>Decisões tomadas no feeling. Sem dados confiáveis, você não consegue melhorar o que não enxerga.</p>
     </div>
     <div class="problem-card">
       <div class="problem-icon">🤯</div>
-      <h3>Time sobrecarregado</h3>
-      <p>Vendedores fazendo tarefas manuais e repetitivas que poderiam ser automatizadas — gastando energia no lugar errado.</p>
+      <h3>Time no operacional</h3>
+      <p>Vendedor gastando tempo com tarefa manual e repetitiva. Energia desperdiçada no lugar errado.</p>
     </div>
     <div class="problem-card">
       <div class="problem-icon">💬</div>
       <h3>Comunicação dispersa</h3>
-      <p>Leads chegando pelo WhatsApp, Instagram, e-mail e site — sem centralização, o histórico se perde e a experiência sofre.</p>
+      <p>Lead chega pelo WhatsApp, Instagram, e-mail e site ao mesmo tempo. Sem centralização, o histórico se perde.</p>
     </div>
     <div class="problem-card">
       <div class="problem-icon">🚫</div>
       <h3>Sem previsibilidade</h3>
-      <p>Meses bons por acaso, meses ruins sem explicação. Impossível escalar o que não é previsível.</p>
+      <p>Mês bom por acaso, mês ruim sem explicação. Você não escala o que não consegue prever.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">📍</div>
+      <h3>Origem desconhecida</h3>
+      <p>De qual canal veio esse lead? Qual campanha gerou a venda? Sem resposta, o investimento em marketing vira chute.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">👤</div>
+      <h3>Cliente invisível</h3>
+      <p>Sem histórico, cada contato começa do zero. Você não sabe se está falando com um lead novo ou um cliente que já comprou. E perde a recompra.</p>
     </div>
   </div>
 </section>
