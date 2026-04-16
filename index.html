@@ -245,12 +245,31 @@
       background: linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%);
     }
 
+    .problems-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .problems-phase { }
+
+    .phase-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-left: 2px solid rgba(201,168,76,0.4);
+      padding-left: 10px;
+      margin-bottom: 16px;
+    }
+
     .problems-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
     }
 
     @media (max-width: 1024px) {
@@ -715,48 +734,58 @@
   <div class="section-header centered">
     <div class="section-tag">O Diagnóstico</div>
     <h2 class="section-title">O que acontece quando o comercial<br/><em>não tem processo</em></h2>
-    <p class="section-lead">A maioria das empresas perde vendas por falta de organização, não de produto. Você se identifica com algum desses cenários?</p>
+    <p class="section-lead">A maioria das empresas perde vendas por falta de organização, não por falta do que vender. Você se identifica com algum desses cenários?</p>
   </div>
-  <div class="problems-grid">
-    <div class="problem-card">
-      <div class="problem-icon">📉</div>
-      <h3>Funil invisível</h3>
-      <p>Ninguém sabe quantos leads estão em cada etapa. Cada vendedor trabalha do seu jeito. O gestor não enxerga nada.</p>
+  <div class="problems-wrapper">
+    <div class="problems-phase">
+      <div class="phase-label">Antes da venda</div>
+      <div class="problems-grid">
+        <div class="problem-card">
+          <div class="problem-icon">💬</div>
+          <h3>Comunicação dispersa</h3>
+          <p>Lead chega pelo WhatsApp, Instagram, e-mail e site ao mesmo tempo. Sem centralização, o histórico se perde.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">📍</div>
+          <h3>Origem desconhecida</h3>
+          <p>De qual canal veio esse lead? Qual campanha gerou a venda? Sem resposta, o investimento em marketing vira chute.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">📉</div>
+          <h3>Funil invisível</h3>
+          <p>Ninguém sabe quantos leads estão em cada etapa. Cada vendedor trabalha do seu jeito. O gestor não enxerga nada.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">🔁</div>
+          <h3>Follow-up esquecido</h3>
+          <p>Lead quente hoje, silêncio amanhã. Sem rotina de acompanhamento, a oportunidade esfria e some.</p>
+        </div>
+      </div>
     </div>
-    <div class="problem-card">
-      <div class="problem-icon">🔁</div>
-      <h3>Follow-up esquecido</h3>
-      <p>Lead quente hoje, silêncio amanhã. Sem rotina de acompanhamento, a oportunidade esfria e some.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">📊</div>
-      <h3>Gestão no escuro</h3>
-      <p>Decisões tomadas no feeling. Sem dados confiáveis, você não consegue melhorar o que não enxerga.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🤯</div>
-      <h3>Time no operacional</h3>
-      <p>Vendedor gastando tempo com tarefa manual e repetitiva. Energia desperdiçada no lugar errado.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">💬</div>
-      <h3>Comunicação dispersa</h3>
-      <p>Lead chega pelo WhatsApp, Instagram, e-mail e site ao mesmo tempo. Sem centralização, o histórico se perde.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">🚫</div>
-      <h3>Sem previsibilidade</h3>
-      <p>Mês bom por acaso, mês ruim sem explicação. Você não escala o que não consegue prever.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">📍</div>
-      <h3>Origem desconhecida</h3>
-      <p>De qual canal veio esse lead? Qual campanha gerou a venda? Sem resposta, o investimento em marketing vira chute.</p>
-    </div>
-    <div class="problem-card">
-      <div class="problem-icon">👤</div>
-      <h3>Cliente invisível</h3>
-      <p>Sem histórico, cada contato começa do zero. Você não sabe se está falando com um lead novo ou um cliente que já comprou. E perde a recompra.</p>
+    <div class="problems-phase">
+      <div class="phase-label">Durante e depois da venda</div>
+      <div class="problems-grid">
+        <div class="problem-card">
+          <div class="problem-icon">🤯</div>
+          <h3>Time no operacional</h3>
+          <p>Vendedor gastando tempo com tarefa manual e repetitiva. Energia desperdiçada no lugar errado.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">📊</div>
+          <h3>Gestão no escuro</h3>
+          <p>Decisões tomadas no feeling. Sem dados confiáveis, você não consegue melhorar o que não enxerga.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">🚫</div>
+          <h3>Sem previsibilidade</h3>
+          <p>Mês bom por acaso, mês ruim sem explicação. Você não escala o que não consegue prever.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">👤</div>
+          <h3>Cliente invisível</h3>
+          <p>Sem histórico, cada contato começa do zero. Você não sabe se está falando com um lead novo ou um cliente que já comprou. E perde a recompra.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
