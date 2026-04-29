@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Política de Privacidade do site marcocordeiro.com.br. Saiba como tratamos seus dados pessoais conforme a LGPD." />
+  <meta name="robots" content="index, follow" />
+  <title>Política de Privacidade | Marco Cordeiro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0A1628;
+      --navy2:  #0F2040;
+      --blue:   #1A3A6B;
+      --gold:   #C9A84C;
+      --gold2:  #E8C56A;
+      --white:  #FFFFFF;
+      --gray:   #F4F6FA;
+      --text:   #E8EDF5;
+      --muted:  #8FA3C0;
+      --radius: 12px;
+      --shadow: 0 4px 32px rgba(0,0,0,0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold2); text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 5%;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .logo:hover { color: var(--gold); text-decoration: none; }
+
+    .badge-nav {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50px;
+      padding: 4px 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 160px 5% 64px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,58,107,0.55) 0%, transparent 70%),
+        linear-gradient(160deg, var(--navy) 0%, #071020 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(26,58,107,0.3) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 50px;
+      padding: 6px 16px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    #hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      max-width: 800px;
+      margin: 0 auto 16px;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+    #hero h1 em { font-style: normal; color: var(--gold); }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+
+    .hero-meta {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 50px;
+      padding: 8px 18px;
+      position: relative;
+    }
+    .hero-meta strong { color: var(--gold); font-weight: 600; }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 72px 5% 96px;
+    }
+
+    /* Sumário */
+    .toc {
+      background: linear-gradient(135deg, rgba(26,58,107,0.25) 0%, rgba(10,22,40,0.6) 100%);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 56px;
+    }
+    .toc-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .toc ol {
+      list-style: none;
+      counter-reset: toc-counter;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 24px;
+    }
+    .toc ol li {
+      counter-increment: toc-counter;
+      position: relative;
+      padding-left: 32px;
+      font-size: 0.92rem;
+    }
+    .toc ol li::before {
+      content: counter(toc-counter, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: 700;
+      color: var(--gold);
+      font-size: 0.82rem;
+    }
+    .toc ol li a {
+      color: var(--text);
+      transition: color 0.2s;
+      text-decoration: none;
+    }
+    .toc ol li a:hover { color: var(--gold); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .toc ol { grid-template-columns: 1fr; }
+      .toc { padding: 24px; }
+    }
+
+    /* Seções */
+    .policy-section { margin-bottom: 48px; scroll-margin-top: 96px; }
+    .policy-section:last-child { margin-bottom: 0; }
+
+    .policy-section h2 {
+      font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    .policy-section h2 .num {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .policy-section h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 24px 0 10px;
+    }
+
+    .policy-section p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .policy-section p:last-child { margin-bottom: 0; }
+
+    .policy-section ul {
+      list-style: none;
+      margin: 12px 0 18px;
+      padding: 0;
+    }
+    .policy-section ul li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .policy-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 11px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .policy-section ul li strong { color: var(--white); font-weight: 600; }
+
+    /* Cards de tecnologia */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 18px 0 8px;
+    }
+    .tech-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 16px 18px;
+      transition: border-color 0.2s;
+    }
+    .tech-card:hover { border-color: rgba(201,168,76,0.25); }
+    .tech-card strong {
+      display: block;
+      color: var(--gold);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .tech-card span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* Caixas de destaque */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(26,58,107,0.3) 0%, rgba(10,22,40,0.6) 100%);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin: 18px 0 0;
+    }
+    .highlight-box p { margin-bottom: 8px; }
+    .highlight-box p:last-child { margin-bottom: 0; }
+    .highlight-box strong { color: var(--gold); }
+
+    /* DPO box */
+    .dpo-card {
+      background: linear-gradient(135deg, rgba(26,58,107,0.35) 0%, rgba(10,22,40,0.7) 100%);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-top: 16px;
+    }
+    .dpo-card .dpo-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .dpo-card .dpo-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .dpo-card .dpo-email {
+      font-size: 0.95rem;
+    }
+
+    /* Empresa info */
+    .empresa-info {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.85;
+    }
+    .empresa-info strong { color: var(--white); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060E1A;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer .logo { font-size: 0.95rem; }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-badge {
+      width: 100%;
+      text-align: center;
+    }
+
+    .footer-badge img {
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .footer-badge img:hover { opacity: 1; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      #hero { padding: 130px 5% 48px; }
+      main { padding: 56px 5% 72px; }
+      .policy-section h2 { flex-direction: column; gap: 4px; align-items: flex-start; }
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">Marco Cordeiro</a>
+  <span class="badge-nav">Partner Gold Kommo</span>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">Documento Legal</div>
+  <h1>Política de <em>Privacidade</em></h1>
+  <p class="hero-sub">
+    Como tratamos seus dados pessoais quando você visita marcocordeiro.com.br ou interage com a Help Estratégias Digitais. Em linguagem clara, sem juridiquês.
+  </p>
+  <div class="hero-meta">
+    Última atualização: <strong>29 de abril de 2026</strong>
+  </div>
+</section>
+
+<!-- CONTEÚDO -->
+<main>
+
+  <!-- Sumário -->
+  <nav class="toc" aria-label="Sumário">
+    <div class="toc-title">Sumário</div>
+    <ol>
+      <li><a href="#dados-coletados">Dados que coletamos</a></li>
+      <li><a href="#tecnologias">Tecnologias de rastreamento</a></li>
+      <li><a href="#finalidade">Finalidade da coleta</a></li>
+      <li><a href="#compartilhamento">Compartilhamento de dados</a></li>
+      <li><a href="#base-legal">Base legal (LGPD)</a></li>
+      <li><a href="#direitos">Direitos do titular</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#retencao">Retenção de dados</a></li>
+      <li><a href="#dpo">Encarregado de Dados (DPO)</a></li>
+      <li><a href="#atualizacoes">Atualizações desta política</a></li>
+    </ol>
+  </nav>
+
+  <!-- Apresentação -->
+  <div class="policy-section">
+    <p>Esta Política de Privacidade explica como a <strong>Help Estratégias Digitais</strong> coleta, utiliza, armazena e protege os dados pessoais dos visitantes e clientes do site <a href="https://marcocordeiro.com.br">marcocordeiro.com.br</a>. Levamos a sua privacidade a sério e seguimos a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+    <div class="empresa-info">
+      <strong>Razão social:</strong> Help Estratégias Digitais<br/>
+      <strong>CNPJ:</strong> 54.289.679/0001-00<br/>
+      <strong>Site:</strong> <a href="https://marcocordeiro.com.br">marcocordeiro.com.br</a><br/>
+      <strong>Contato:</strong> <a href="mailto:contato@marcocordeiro.com.br">contato@marcocordeiro.com.br</a>
+    </div>
+  </div>
+
+  <!-- 1. Dados coletados -->
+  <section class="policy-section" id="dados-coletados">
+    <h2><span class="num">01</span> Dados que coletamos</h2>
+    <p>Coletamos diferentes tipos de dados para oferecer uma boa experiência e cumprir com o que prometemos. Os dados são:</p>
+    <ul>
+      <li><strong>Dados de navegação:</strong> páginas visitadas, tempo de permanência, dispositivo utilizado, navegador, sistema operacional e endereço IP.</li>
+      <li><strong>Dados de cookies e rastreamento:</strong> informações coletadas automaticamente por cookies e tecnologias similares enquanto você navega pelo site.</li>
+      <li><strong>Dados informados voluntariamente:</strong> nome, e-mail, telefone, empresa e outras informações fornecidas em formulários de contato, cadastro ou compra.</li>
+    </ul>
+  </section>
+
+  <!-- 2. Tecnologias -->
+  <section class="policy-section" id="tecnologias">
+    <h2><span class="num">02</span> Tecnologias de rastreamento utilizadas</h2>
+    <p>Para melhorar a experiência e mensurar resultados, utilizamos as seguintes ferramentas:</p>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <strong>Google Analytics 4</strong>
+        <span>Análise de tráfego, comportamento dos visitantes e desempenho das páginas.</span>
+      </div>
+      <div class="tech-card">
+        <strong>Meta Pixel</strong>
+        <span>Mensuração de campanhas no Facebook e Instagram, além de remarketing.</span>
+      </div>
+      <div class="tech-card">
+        <strong>Google Tag Manager</strong>
+        <span>Gerenciamento centralizado de tags e scripts de rastreamento.</span>
+      </div>
+      <div class="tech-card">
+        <strong>Hotmart</strong>
+        <span>Processamento de pagamentos e entrega de produtos digitais.</span>
+      </div>
+      <div class="tech-card">
+        <strong>Kommo CRM</strong>
+        <span>Gestão de relacionamento com clientes e comunicação comercial.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Finalidade -->
+  <section class="policy-section" id="finalidade">
+    <h2><span class="num">03</span> Finalidade da coleta</h2>
+    <p>Os dados são tratados com finalidades específicas e legítimas:</p>
+    <ul>
+      <li>Melhorar a experiência de navegação no site.</li>
+      <li>Mensurar e otimizar resultados de campanhas de marketing.</li>
+      <li>Personalizar conteúdo e anúncios apresentados a você.</li>
+      <li>Processar compras de produtos digitais e entregar o que foi adquirido.</li>
+      <li>Realizar comunicação comercial, atendimento e suporte.</li>
+    </ul>
+  </section>
+
+  <!-- 4. Compartilhamento -->
+  <section class="policy-section" id="compartilhamento">
+    <h2><span class="num">04</span> Compartilhamento de dados</h2>
+    <p>Os dados podem ser compartilhados com as plataformas que utilizamos para operar, exclusivamente para as finalidades descritas nesta política. Entre elas: <strong>Google</strong>, <strong>Meta</strong>, <strong>Hotmart</strong> e <strong>Kommo</strong>.</p>
+    <div class="highlight-box">
+      <p><strong>O que não fazemos:</strong> nunca vendemos seus dados pessoais a terceiros. Os dados são usados apenas para entregar o que prometemos e nada além disso.</p>
+    </div>
+  </section>
+
+  <!-- 5. Base legal -->
+  <section class="policy-section" id="base-legal">
+    <h2><span class="num">05</span> Base legal (LGPD)</h2>
+    <p>O tratamento dos seus dados é amparado pelas seguintes bases legais previstas na LGPD:</p>
+    <ul>
+      <li><strong>Consentimento:</strong> para uso de cookies de marketing e analytics, mediante autorização clara do visitante.</li>
+      <li><strong>Execução de contrato:</strong> para concluir compras realizadas pela Hotmart e entregar o produto adquirido.</li>
+      <li><strong>Legítimo interesse:</strong> para comunicação comercial e atendimento, sempre respeitando seus direitos como titular.</li>
+    </ul>
+  </section>
+
+  <!-- 6. Direitos -->
+  <section class="policy-section" id="direitos">
+    <h2><span class="num">06</span> Direitos do titular</h2>
+    <p>Como titular dos dados, você tem garantido pela LGPD os seguintes direitos:</p>
+    <ul>
+      <li><strong>Acesso:</strong> saber quais dados seus tratamos.</li>
+      <li><strong>Correção:</strong> solicitar a atualização de dados incompletos ou desatualizados.</li>
+      <li><strong>Exclusão:</strong> pedir a remoção de dados quando aplicável.</li>
+      <li><strong>Portabilidade:</strong> receber seus dados em formato estruturado.</li>
+      <li><strong>Revogação do consentimento:</strong> retirar a autorização para o tratamento a qualquer momento.</li>
+    </ul>
+    <p>Para exercer qualquer um desses direitos, basta enviar um e-mail para <a href="mailto:contato@marcocordeiro.com.br">contato@marcocordeiro.com.br</a>. Vamos responder o mais rápido possível.</p>
+  </section>
+
+  <!-- 7. Cookies -->
+  <section class="policy-section" id="cookies">
+    <h2><span class="num">07</span> Cookies</h2>
+    <p>Cookies são pequenos arquivos que ficam armazenados no seu navegador para fazer o site funcionar e medir o que importa. Nós usamos três tipos:</p>
+    <ul>
+      <li><strong>Essenciais:</strong> indispensáveis para o site funcionar corretamente. Sem eles, partes do site param.</li>
+      <li><strong>Analytics:</strong> ajudam a entender como você usa o site para a gente melhorar a experiência.</li>
+      <li><strong>Marketing:</strong> permitem personalizar anúncios e medir o desempenho das campanhas.</li>
+    </ul>
+    <p>Você pode gerenciar ou desativar cookies a qualquer momento direto nas configurações do seu navegador. Lembrando que desativar cookies pode afetar o funcionamento de algumas partes do site.</p>
+  </section>
+
+  <!-- 8. Retenção -->
+  <section class="policy-section" id="retencao">
+    <h2><span class="num">08</span> Retenção de dados</h2>
+    <p>Os dados pessoais são mantidos pelo tempo necessário para cumprir as finalidades descritas nesta política ou enquanto durar uma obrigação legal, contratual ou regulatória que exija o armazenamento.</p>
+    <p>Após esse período, os dados são excluídos ou anonimizados de forma segura.</p>
+  </section>
+
+  <!-- 9. DPO -->
+  <section class="policy-section" id="dpo">
+    <h2><span class="num">09</span> Encarregado de Dados (DPO)</h2>
+    <p>O Encarregado pelo Tratamento de Dados Pessoais é a pessoa responsável por receber suas solicitações e dúvidas sobre privacidade.</p>
+    <div class="dpo-card">
+      <div class="dpo-label">Encarregado de Dados</div>
+      <div class="dpo-name">Marco Henrique Cordeiro</div>
+      <div class="dpo-email">
+        <a href="mailto:contato@marcocordeiro.com.br">contato@marcocordeiro.com.br</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Atualizações -->
+  <section class="policy-section" id="atualizacoes">
+    <h2><span class="num">10</span> Atualizações desta política</h2>
+    <p>Esta Política de Privacidade pode ser atualizada a qualquer momento, sempre que houver mudança nas práticas de tratamento de dados ou exigência legal.</p>
+    <p>Sempre que isso acontecer, a data de "última atualização" no topo desta página é alterada. Recomendamos consultar este documento de tempos em tempos.</p>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo" href="index.html">Marco Cordeiro</a>
+  <div class="footer-copy">© 2026 marcocordeiro.com.br · Todos os direitos reservados</div>
+  <div class="footer-copy">
+    <a href="/privacidade" style="color:inherit;text-decoration:underline;">Política de Privacidade</a>
+  </div>
+  <div class="footer-copy">Partner Gold Kommo</div>
+  <div class="footer-badge">
+    <a href="https://www.kommo.com/br/parceiros/encontrar-parceiro/help-estrategias-digitais/" target="_blank" rel="noopener">
+      <img src="Badge dark.png" alt="Parceiro Gold Kommo" width="120" />
+    </a>
+  </div>
+</footer>
+
+<script src="cookie-banner.js" defer></script>
+
+</body>
+</html>
