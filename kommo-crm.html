@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Implemente o Kommo CRM com quem já estruturou mais de 240 operações comerciais. Parceiro Gold Kommo no Brasil. Processo, time e IA para vender mais." />
-  <title>Kommo CRM no Brasil | Parceiro Gold Oficial | Marco Cordeiro</title>
+  <meta name="description" content="A Kommo é o CRM com IA para vender pelo WhatsApp e Instagram. Implemente com um parceiro Gold no Brasil. Mais de 255 empresas com processo, time e IA." />
+  <title>Kommo CRM para WhatsApp | Parceiro Gold no Brasil</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -41,7 +41,8 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
-      justify-content: space-between;
+      /* so o selo no topo, entao fica centralizado */
+      justify-content: center;
       align-items: center;
       padding: 18px 5%;
       background: rgba(10, 22, 40, 0.92);
@@ -67,6 +68,13 @@
       padding: 4px 12px;
       letter-spacing: 0.05em;
       text-transform: uppercase;
+      /* o selo tambem leva de volta pra home */
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .badge-nav:hover {
+      background: rgba(201,168,76,0.2);
+      border-color: rgba(201,168,76,0.5);
     }
 
     /* ── HERO ── */
@@ -95,23 +103,6 @@
       pointer-events: none;
     }
 
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      background: rgba(201,168,76,0.1);
-      border: 1px solid rgba(201,168,76,0.25);
-      border-radius: 50px;
-      padding: 6px 16px;
-      margin-bottom: 28px;
-    }
-    .hero-eyebrow::before { content: '★'; font-size: 0.7rem; }
-
     #hero h1 {
       font-size: clamp(2rem, 5vw, 3.6rem);
       font-weight: 900;
@@ -129,7 +120,8 @@
     .hero-sub {
       font-size: clamp(1rem, 2vw, 1.15rem);
       color: var(--muted);
-      max-width: 540px;
+      /* alargado porque o subtitulo novo e mais longo que o anterior */
+      max-width: 620px;
       margin-bottom: 48px;
       line-height: 1.7;
     }
@@ -671,10 +663,30 @@
       section { padding: 72px 5%; }
       .features-grid { grid-template-columns: 1fr; }
 
+      /* Hero compacto no mobile: menos respiro vertical entre os elementos.
+         100svh usa a altura visivel real do navegador, sem contar a barra de
+         endereco, o que evita o vazio que sobrava com 100vh. */
+      #hero {
+        min-height: 100svh;
+        padding: 96px 5% 64px;
+      }
+      #hero h1 { margin-bottom: 16px; }
+      .hero-sub { margin-bottom: 32px; }
+      .scroll-hint { bottom: 18px; }
+      .scroll-hint::after { height: 24px; }
+
       footer {
         flex-direction: column;
         text-align: center;
       }
+    }
+
+    /* Telas curtas tipo iPhone SE: aperta mais o Hero pra tudo caber sem rolagem */
+    @media (max-width: 600px) and (max-height: 700px) {
+      #hero { padding: 84px 5% 56px; }
+      #hero h1 { margin-bottom: 12px; }
+      .hero-sub { margin-bottom: 24px; }
+      .scroll-hint { display: none; }
     }
   </style>
 </head>
@@ -682,16 +694,14 @@
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="index.html">Marco Cordeiro</a>
-  <span class="badge-nav">Partner Gold Kommo</span>
+  <a class="badge-nav" href="index.html">Partner Gold Kommo</a>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-eyebrow">Parceiro Gold Oficial no Brasil</div>
   <h1>Kommo CRM: o CRM com IA<br/>para vender pelo <em>WhatsApp</em></h1>
   <p class="hero-sub">
-    Mais de 240 empresas implementadas. Processo definido, time treinado, IA executando.
+    A Kommo é um CRM que reúne WhatsApp, Instagram e todos os seus canais num único funil de vendas, com IA que qualifica leads e responde sozinha. Mais de 255 empresas já implementadas por Marco Cordeiro, parceiro Gold no Brasil.
   </p>
   <a class="btn-primary" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20encontrei%20o%20seu%20site%20e%20quero%20entender%20como%20organizar%20o%20comercial%20da%20minha%20empresa%20usando%20a%20kommo." target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.048 23.617a.5.5 0 0 0 .614.63l5.998-1.572A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.358-.213-3.712.974.99-3.617-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
@@ -720,7 +730,7 @@
     </div>
     <div class="oque-visual">
       <div class="oque-stat">
-        <div class="oque-stat-number">240+</div>
+        <div class="oque-stat-number">255+</div>
         <div class="oque-stat-label">Empresas implementadas por Marco Cordeiro</div>
       </div>
       <div class="oque-stat">
@@ -810,7 +820,7 @@
     <div class="diferenciais-visual">
       <div class="partner-badge">Partner Gold Kommo</div>
       <h3>Marco Cordeiro</h3>
-      <p>Especialista em organização comercial com 14 anos de experiência e mais de 240 empresas implementadas.</p>
+      <p>Especialista em organização comercial com 14 anos de experiência e mais de 255 empresas implementadas.</p>
       <div class="trust-items">
         <div class="trust-item">
           <div class="trust-check">✓</div>
