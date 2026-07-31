@@ -375,6 +375,121 @@
       border-color: rgba(201,168,76,0.3);
     }
 
+    /* ── SITUAÇÕES + FECHO DE RESULTADO ── */
+    #situacoes {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* 12 situacoes: 3 colunas x 4 linhas no desktop, sem sobra. */
+    .situacoes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    /* Fio dourado na lateral separa estes cards dos de funcionalidade. */
+    .situacao-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 2px solid rgba(201,168,76,0.35);
+      border-radius: var(--radius);
+      padding: 26px 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .situacao-card:hover {
+      border-color: rgba(201,168,76,0.25);
+      border-left-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .situacao-card h3 {
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .situacao-card p {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* Painel do fecho, conectado as situacoes mas destacado do fundo. */
+    .resultado-panel {
+      max-width: 1180px;
+      margin: 80px auto 0;
+      background: linear-gradient(135deg, rgba(26,58,107,0.3) 0%, rgba(10,22,40,0.8) 100%);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 20px;
+      padding: 56px 44px;
+    }
+
+    .resultado-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .resultado-header h3 {
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .resultado-header h3 em { font-style: normal; color: var(--gold); }
+
+    .resultado-header p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .resultado-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .resultado-group h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+    }
+
+    .resultado-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .resultado-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .resultado-list li::before {
+      content: '✓';
+      flex-shrink: 0;
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+
     /* ── POR QUE MARCO ── */
     #diferenciais {
       background: linear-gradient(180deg, var(--navy2) 0%, var(--navy) 100%);
@@ -711,6 +826,8 @@
 
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .segmentos-grid { grid-template-columns: repeat(2, 1fr); }
+      .situacoes-grid { grid-template-columns: repeat(2, 1fr); }
+      .resultado-grid { grid-template-columns: repeat(2, 1fr); }
 
       .plans-grid { grid-template-columns: 1fr; max-width: 420px; }
     }
@@ -719,6 +836,9 @@
       section { padding: 72px 5%; }
       .features-grid { grid-template-columns: 1fr; }
       .segmentos-grid { grid-template-columns: 1fr; }
+      .situacoes-grid { grid-template-columns: 1fr; }
+      .resultado-grid { grid-template-columns: 1fr; gap: 28px; }
+      .resultado-panel { padding: 40px 24px; margin-top: 56px; }
 
       /* Hero compacto no mobile: menos respiro vertical entre os elementos.
          100svh usa a altura visivel real do navegador, sem contar a barra de
@@ -909,6 +1029,110 @@
       <span class="segmento-tag">Loja de roupas</span>
       <span class="segmento-tag">Loja de calçados</span>
       <span class="segmento-tag">Prestadores de serviços</span>
+    </div>
+  </div>
+</section>
+
+<!-- SITUAÇÕES REAIS + FECHO DE RESULTADO -->
+<section id="situacoes">
+  <div class="section-header centered">
+    <div class="section-tag">Situações reais</div>
+    <h2 class="section-title">Você reconhece alguma <em>dessas situações?</em></h2>
+    <p class="section-lead">São as cenas que mais se repetem em quem vende por WhatsApp. Veja o que muda quando o comercial vira processo na Kommo.</p>
+  </div>
+  <div class="situacoes-grid">
+    <div class="situacao-card">
+      <h3>Cada um vende de um jeito</h3>
+      <p>Um vendedor faz de um jeito, o outro de outro, e ninguém sabe qual funciona. Com a Kommo, o comercial vira processo. Todo mundo segue o mesmo caminho, do primeiro contato ao fechamento.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>O lead chega e some</h3>
+      <p>Entra gente pelo anúncio o dia todo, mas ninguém sabe de onde veio nem quem valia a pena. Com a Kommo, cada lead cai rastreado pela fonte. Você enxerga qual canal traz venda e qual só queima dinheiro.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>A informação do cliente se perde na conversa</h3>
+      <p>O cliente já contou o que precisa, mas na hora de fechar ninguém lembra. Com a Kommo, cada dado é coletado ao longo da conversa e fica registrado. O vendedor retoma de onde parou, sem repetir pergunta.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>As vendas vivem soltas no WhatsApp</h3>
+      <p>Negociação misturada com conversa pessoal, sem saber quem está quente ou frio. Com a Kommo, cada lead entra num funil e ocupa um lugar. Nada some, nada é esquecido.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>O time gasta o dia em tarefa repetida</h3>
+      <p>Mandar a mesma mensagem, mover contato na mão, lembrar de cobrar. O dia todo nisso. Com a Kommo, a automação faz o trabalho pesado sozinha. O vendedor sobra tempo pra vender.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>O cliente espera horas e desiste</h3>
+      <p>Ele manda mensagem, ninguém responde na hora, e ele já comprou do concorrente. Com a Kommo, o agente de IA responde na hora, qualifica e agenda sozinho, de dia e de madrugada.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>Ninguém sabe onde a venda trava</h3>
+      <p>As vendas caem e o motivo é um mistério. Com a Kommo, o relatório mostra a conversão por etapa, por funil, por vendedor e por fonte. O gargalo aparece na tela.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>O atendimento é lento e bagunçado</h3>
+      <p>Mensagem espalhada em três aparelhos, cliente esperando, resposta que nunca vem. Com a Kommo, tudo cai numa tela só. O atendimento fica rápido e nenhuma mensagem se perde.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>O gestor não enxerga o que o time faz</h3>
+      <p>Você pergunta como foi o dia e recebe um "foi bom" sem prova. Com a Kommo, a gestão fica à vista. Dá pra ver o que cada vendedor fez, sem cobrar de olho fechado.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>A base de cliente antigo está parada</h3>
+      <p>Centenas de contatos que já compraram e foram esquecidos. Com a Kommo, você reativa essa base com uma campanha e volta a vender pra quem já confia em você.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>O processo vive na cabeça de uma pessoa só</h3>
+      <p>Se essa pessoa falta ou sai, a operação para. Com a Kommo, o processo fica montado na ferramenta. Roda igual, com qualquer um no comando.</p>
+    </div>
+    <div class="situacao-card">
+      <h3>O follow-up nunca acontece</h3>
+      <p>O vendedor promete retornar e esquece. O cliente que teria comprado vai embora sem ninguém perceber. Com a Kommo, o próprio sistema lembra e cobra o retorno na hora certa. Nenhum cliente fica sem resposta por esquecimento.</p>
+    </div>
+  </div>
+
+  <div class="resultado-panel">
+    <div class="resultado-header">
+      <h3>No fim, tudo isso vira <em>resultado</em></h3>
+      <p>Não é sobre ter mais uma ferramenta. É sobre o que muda no seu negócio quando o comercial funciona de verdade.</p>
+    </div>
+    <div class="resultado-grid">
+      <div class="resultado-group">
+        <h4>Ganhar mais</h4>
+        <ul class="resultado-list">
+          <li>Aumento de vendas</li>
+          <li>Mais conversão do mesmo número de leads</li>
+          <li>Recuperação de venda que ia se perder</li>
+          <li>Reativação da base antiga</li>
+          <li>Ticket maior por venda</li>
+        </ul>
+      </div>
+      <div class="resultado-group">
+        <h4>Gastar menos, perder menos</h4>
+        <ul class="resultado-list">
+          <li>Menos lead desperdiçado</li>
+          <li>Menos dependência de uma pessoa só</li>
+          <li>Menos retrabalho no dia a dia</li>
+        </ul>
+      </div>
+      <div class="resultado-group">
+        <h4>Enxergar e controlar</h4>
+        <ul class="resultado-list">
+          <li>Gestão à vista do time</li>
+          <li>Decisão com dado, não no achismo</li>
+          <li>Previsibilidade de quanto vai vender</li>
+          <li>Clareza de onde vem cada venda</li>
+        </ul>
+      </div>
+      <div class="resultado-group">
+        <h4>Operação mais leve</h4>
+        <ul class="resultado-list">
+          <li>Processo que todo mundo segue</li>
+          <li>Prospecção melhor</li>
+          <li>Atendimento rápido que não perde cliente</li>
+          <li>Menos correria, mais tranquilidade</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
