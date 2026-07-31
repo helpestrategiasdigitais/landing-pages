@@ -757,120 +757,19 @@
       line-height: 1.6;
     }
 
-    /* ── POR QUE MARCO ── */
-    #diferenciais {
-      background: linear-gradient(180deg, var(--navy2) 0%, var(--navy) 100%);
-    }
-
-    .diferenciais-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .diferencial-list {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
-    .diferencial-item {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .diferencial-num {
-      flex-shrink: 0;
-      width: 44px; height: 44px;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
-      color: var(--navy);
-      font-weight: 800;
-      font-size: 0.95rem;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-    }
-
-    .diferencial-body h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: var(--white);
-    }
-    .diferencial-body p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .diferenciais-visual {
-      background: linear-gradient(135deg, rgba(26,58,107,0.3) 0%, rgba(10,22,40,0.8) 100%);
-      border: 1px solid rgba(201,168,76,0.25);
-      border-radius: 20px;
-      padding: 44px 36px;
+    /* Chamada de acao no fim de um bloco, no meio da pagina. */
+    .bloco-cta {
       text-align: center;
+      margin-top: 44px;
     }
 
-    .partner-badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--gold);
-      background: rgba(201,168,76,0.1);
-      border: 1px solid rgba(201,168,76,0.25);
-      border-radius: 50px;
-      padding: 6px 16px;
-      margin-bottom: 20px;
-    }
-
-    .diferenciais-visual h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .diferenciais-visual p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 28px;
-    }
-
-    .trust-items {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      text-align: left;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-size: 0.85rem;
+    .bloco-cta-linha {
+      font-size: 1.02rem;
+      font-weight: 600;
       color: var(--text);
-      font-weight: 500;
-    }
-
-    .trust-check {
-      flex-shrink: 0;
-      width: 22px; height: 22px;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
-      color: var(--navy);
-      font-weight: 800;
-      font-size: 0.7rem;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
+      line-height: 1.6;
+      max-width: 620px;
+      margin: 0 auto 24px;
     }
 
     /* ── PLANOS ── */
@@ -1094,6 +993,70 @@
       line-height: 1.7;
     }
 
+    /* ── FAQ ── */
+    #faq {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Acordeao nativo com details/summary: sem JS e ja acessivel pelo
+       teclado. O atributo name deixa so uma resposta aberta por vez. */
+    .faq-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      transition: border-color 0.3s;
+    }
+    .faq-item[open] { border-color: rgba(201,168,76,0.3); }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.45;
+      transition: color 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--gold2); }
+
+    /* Seta em CSS, sem imagem nem emoji. */
+    .faq-item summary::after {
+      content: '';
+      flex-shrink: 0;
+      width: 9px; height: 9px;
+      margin-top: -4px;
+      border-right: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      transform: rotate(45deg);
+      transition: transform 0.25s, margin 0.25s;
+    }
+    .faq-item[open] summary::after {
+      transform: rotate(-135deg);
+      margin-top: 4px;
+    }
+
+    .faq-answer {
+      padding: 0 24px 22px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
     /* ── CTA FINAL ── */
     #cta {
       background:
@@ -1167,8 +1130,7 @@
     }
 
     @media (max-width: 900px) {
-      .oque-wrapper,
-      .diferenciais-wrapper { grid-template-columns: 1fr; gap: 40px; }
+      .oque-wrapper { grid-template-columns: 1fr; gap: 40px; }
 
       .features-grid { grid-template-columns: repeat(2, 1fr); }
       .segmentos-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1202,6 +1164,8 @@
       .visao-wrapper { padding: 32px 24px; margin-top: 56px; }
       .plans-grid { grid-template-columns: 1fr; max-width: 420px; }
       .honesto-grid { grid-template-columns: 1fr; }
+      .faq-item summary { padding: 18px 18px; font-size: 0.92rem; }
+      .faq-answer { padding: 0 18px 20px; }
 
       /* No mobile a tabela vira duas listas: primeiro a coluna da esquerda
          (celulas impares), depois a da direita (pares). */
@@ -1505,6 +1469,14 @@
         </ul>
       </div>
     </div>
+
+    <div class="bloco-cta">
+      <p class="bloco-cta-linha">Esse é o resultado de um comercial organizado. Quer o mesmo no seu?</p>
+      <a class="btn-primary" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20encontrei%20o%20seu%20site%20e%20quero%20entender%20como%20organizar%20o%20comercial%20da%20minha%20empresa%20usando%20a%20kommo." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.048 23.617a.5.5 0 0 0 .614.63l5.998-1.572A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.358-.213-3.712.974.99-3.617-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+        Quero esse resultado no meu comercial
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1588,6 +1560,13 @@
   <p class="compare-nota">O suporte prioritário e o mês grátis seguem as regras do programa de parceiros Kommo. O mês grátis vale a partir de 3 usuários no plano Base e 2 usuários nos planos Advanced e Pro.</p>
 
   <p class="ocv-fecho">No fim, comprar direto é comprar uma caixa de ferramentas. Comprar comigo é receber a operação montada e funcionando.</p>
+
+  <div class="bloco-cta">
+    <a class="btn-primary" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20encontrei%20o%20seu%20site%20e%20quero%20entender%20como%20organizar%20o%20comercial%20da%20minha%20empresa%20usando%20a%20kommo." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.048 23.617a.5.5 0 0 0 .614.63l5.998-1.572A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.358-.213-3.712.974.99-3.617-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+      Quero minha operação montada
+    </a>
+  </div>
 </section>
 
 <!-- QUEM SOU -->
@@ -1614,68 +1593,7 @@
   </div>
 </section>
 
-<!-- POR QUE MARCO CORDEIRO -->
-<section id="diferenciais">
-  <div class="diferenciais-wrapper">
-    <div>
-      <div class="section-tag">Por que comprar com Marco Cordeiro</div>
-      <h2 class="section-title">Não é só licença.<br/><em>É implementação completa.</em></h2>
-      <p class="section-lead" style="margin-bottom: 40px;">Qualquer revendedor entrega a ferramenta. A diferença é o que acontece depois da ativação.</p>
-      <div class="diferencial-list">
-        <div class="diferencial-item">
-          <div class="diferencial-num">1</div>
-          <div class="diferencial-body">
-            <h4>Mapeamento do processo comercial antes de configurar</h4>
-            <p>A Kommo é configurada para o seu funil, não para um modelo genérico. Primeiro entendemos como você vende. Depois montamos a ferramenta.</p>
-          </div>
-        </div>
-        <div class="diferencial-item">
-          <div class="diferencial-num">2</div>
-          <div class="diferencial-body">
-            <h4>Time treinado para usar, não só a ferramenta instalada</h4>
-            <p>CRM parado não vende. Treinamos o time até o processo virar rotina e a ferramenta ser usada de verdade.</p>
-          </div>
-        </div>
-        <div class="diferencial-item">
-          <div class="diferencial-num">3</div>
-          <div class="diferencial-body">
-            <h4>Suporte de quem conhece vendas, não só tecnologia</h4>
-            <p>Quando surgir dúvida, você fala com alguém que entende de processo comercial. Não só de configuração de sistema.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="diferenciais-visual">
-      <div class="partner-badge">Partner Gold Kommo</div>
-      <h3>Marco Cordeiro</h3>
-      <p>Especialista em organização comercial com 14 anos de experiência e mais de 255 empresas implementadas.</p>
-      <div class="trust-items">
-        <div class="trust-item">
-          <div class="trust-check">✓</div>
-          Parceiro Gold oficial no Brasil
-        </div>
-        <div class="trust-item">
-          <div class="trust-check">✓</div>
-          Implementação com processo definido
-        </div>
-        <div class="trust-item">
-          <div class="trust-check">✓</div>
-          Treinamento do time incluído
-        </div>
-        <div class="trust-item">
-          <div class="trust-check">✓</div>
-          Suporte focado em resultado
-        </div>
-        <div class="trust-item">
-          <div class="trust-check">✓</div>
-          IA integrada ao comercial
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PLANOS -->
+<!-- PREÇO -->
 <section id="planos">
   <div class="section-header centered">
     <div class="section-tag">Preço</div>
@@ -1775,6 +1693,81 @@
   <p class="ocv-fecho">Se nenhuma dessas é o seu caso, então a Kommo provavelmente é exatamente o que o seu comercial precisa. E aí eu posso ajudar.</p>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header centered">
+    <div class="section-tag">Perguntas frequentes</div>
+    <h2 class="section-title">Perguntas frequentes <em>sobre a Kommo</em></h2>
+    <p class="section-lead">As dúvidas que mais aparecem antes de contratar. Se a sua não estiver aqui, é só me chamar.</p>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item" name="faq">
+      <summary>O que é um CRM de vendas?</summary>
+      <p class="faq-answer">É um sistema que organiza todos os seus contatos e vendas num só lugar. Em vez de deixar cliente espalhado no WhatsApp, no caderno e na memória, o CRM guarda cada conversa, mostra em que etapa a venda está e lembra o time do próximo passo. A Kommo é um CRM feito pra quem vende por mensagem.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>O que é a API oficial do WhatsApp?</summary>
+      <p class="faq-answer">É a conexão liberada pela Meta pra empresa usar o WhatsApp de forma profissional, sem risco de bloqueio. Com ela, você conecta o WhatsApp ao CRM, automatiza mensagem e dispara pra toda a base sem cair em banimento. É diferente do WhatsApp comum e do Business normal, que não foram feitos pra volume.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Qual a diferença entre o WhatsApp comum e a API oficial?</summary>
+      <p class="faq-answer">O WhatsApp comum roda num celular só e não aguenta automação nem volume. A API oficial roda na nuvem, conecta vários atendentes no mesmo número, integra com o CRM e permite disparo em massa sem bloqueio. Pra um time que vende de verdade, a API oficial é o que sustenta a operação.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>A Kommo funciona no meu WhatsApp atual?</summary>
+      <p class="faq-answer">Sim. A Kommo conecta no número que você já usa, seja pela API oficial ou pelo WhatsApp comum. Você não perde as conversas e não recomeça do zero. O que muda é que tudo passa a ficar organizado dentro do CRM.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Preciso trocar meu número pra usar a Kommo?</summary>
+      <p class="faq-answer">Não. Você mantém o mesmo número que seus clientes já conhecem. A Kommo se conecta a ele. A diferença é que, em vez do atendimento ficar preso num celular, ele passa a rodar no sistema, com todo o time acessando o mesmo número.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>A Kommo integra com as ferramentas que já uso?</summary>
+      <p class="faq-answer">Sim, com a maioria. A Kommo conecta com Instagram, e-mail, telefone, Facebook e centenas de outras ferramentas. E o que não tem integração pronta pode ser ligado por automação. Na implementação, a gente monta essas conexões pra você não ter que fazer nada na mão.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Quanto tempo leva pra implementar a Kommo?</summary>
+      <p class="faq-answer">Depende do tamanho da operação, mas a maioria fica pronta em poucas semanas. Primeiro a gente entende como você vende, depois monta o funil, conecta o WhatsApp, configura as automações e treina o time. Você não recebe um sistema vazio pra virar sozinho. Recebe a operação montada e funcionando.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Preciso saber de tecnologia pra usar a Kommo?</summary>
+      <p class="faq-answer">Não. Se você usa WhatsApp, você consegue usar a Kommo. A tela é simples e o time aprende rápido. E na implementação eu treino todo mundo até a ferramenta virar rotina. A parte técnica fica comigo, você foca em vender.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Meu time pequeno consegue usar a Kommo?</summary>
+      <p class="faq-answer">Sim. A Kommo funciona pra time de qualquer tamanho, de dois vendedores a dezenas. Pra time pequeno, ela ajuda ainda mais, porque organiza o atendimento sem precisar contratar mais gente. Cada pessoa rende mais com o processo montado.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>A Kommo tem versão em português?</summary>
+      <p class="faq-answer">Sim. A Kommo é toda em português, do sistema ao suporte. E comigo, o atendimento e a implementação são em português do começo ao fim, com quem entende o mercado brasileiro.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>A Kommo tem chatbot?</summary>
+      <p class="faq-answer">Sim. A Kommo tem o Salesbot, um bot que você monta sem programar, no arrasta-e-solta. Ele responde, coleta dados e encaminha o cliente sozinho. É parecido com o ManyChat, mas roda dentro do CRM, então tudo que o bot faz já fica registrado no funil.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>O agente de IA responde sozinho de verdade?</summary>
+      <p class="faq-answer">Sim. O agente de IA da Kommo entende a mensagem do cliente e responde como uma pessoa, a qualquer hora. Ele qualifica o lead, tira dúvida, agenda reunião e move a venda no funil sozinho. Você configura o que ele pode fazer, e ele cuida do atendimento enquanto o time foca em fechar.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Quanto custa a Kommo?</summary>
+      <p class="faq-answer">A Kommo cobra por usuário, por mês, a partir de R$ 76 no plano Básico. O valor depende do plano e do tamanho do time, e o pagamento é em dólar, então o fechamento segue a cotação do dia. Comigo, você ainda ganha um mês grátis. Se quiser o valor exato pro seu time hoje, é só me chamar que eu faço o cálculo na hora.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>A Kommo tem versão grátis?</summary>
+      <p class="faq-answer">A Kommo tem um período de teste gratuito pra você conhecer a ferramenta. Depois disso, é um sistema pago, cobrado por usuário. Não existe versão grátis pra sempre, porque é uma ferramenta profissional de vendas. Mas dá pra testar antes de decidir.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Por que contratar com você e não direto no site da Kommo?</summary>
+      <p class="faq-answer">Porque comprar direto é receber a ferramenta vazia pra configurar sozinho. Comigo, você recebe a operação montada: funil, WhatsApp, automação e time treinado, com o Método OCV. Ainda ganha suporte prioritário e um mês grátis pela parceria. Custa o mesmo, mas você não começa do zero nem sozinho.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>A Kommo substitui meu ERP ou sistema de gestão?</summary>
+      <p class="faq-answer">Não. A Kommo é um CRM de vendas, não um ERP. Ela organiza o comercial, do primeiro contato ao fechamento, mas não controla estoque, nota fiscal ou financeiro. Se você precisa de gestão completa, a Kommo cuida da parte de vendas e pode se conectar ao seu sistema de gestão.</p>
+    </details>
+  </div>
+</section>
+
 <!-- CTA FINAL -->
 <section id="cta">
   <div class="section-tag">Próximo Passo</div>
@@ -1808,6 +1801,145 @@
 </a>
 
 <script src="cookie-banner.js" defer></script>
+
+<!-- Dado estruturado do FAQ: ajuda o Google a mostrar as perguntas na busca
+     e as IAs a citarem as respostas. O texto tem que bater com o da tela. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é um CRM de vendas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "É um sistema que organiza todos os seus contatos e vendas num só lugar. Em vez de deixar cliente espalhado no WhatsApp, no caderno e na memória, o CRM guarda cada conversa, mostra em que etapa a venda está e lembra o time do próximo passo. A Kommo é um CRM feito pra quem vende por mensagem."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é a API oficial do WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "É a conexão liberada pela Meta pra empresa usar o WhatsApp de forma profissional, sem risco de bloqueio. Com ela, você conecta o WhatsApp ao CRM, automatiza mensagem e dispara pra toda a base sem cair em banimento. É diferente do WhatsApp comum e do Business normal, que não foram feitos pra volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre o WhatsApp comum e a API oficial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O WhatsApp comum roda num celular só e não aguenta automação nem volume. A API oficial roda na nuvem, conecta vários atendentes no mesmo número, integra com o CRM e permite disparo em massa sem bloqueio. Pra um time que vende de verdade, a API oficial é o que sustenta a operação."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Kommo funciona no meu WhatsApp atual?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A Kommo conecta no número que você já usa, seja pela API oficial ou pelo WhatsApp comum. Você não perde as conversas e não recomeça do zero. O que muda é que tudo passa a ficar organizado dentro do CRM."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso trocar meu número pra usar a Kommo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. Você mantém o mesmo número que seus clientes já conhecem. A Kommo se conecta a ele. A diferença é que, em vez do atendimento ficar preso num celular, ele passa a rodar no sistema, com todo o time acessando o mesmo número."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Kommo integra com as ferramentas que já uso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim, com a maioria. A Kommo conecta com Instagram, e-mail, telefone, Facebook e centenas de outras ferramentas. E o que não tem integração pronta pode ser ligado por automação. Na implementação, a gente monta essas conexões pra você não ter que fazer nada na mão."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto tempo leva pra implementar a Kommo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende do tamanho da operação, mas a maioria fica pronta em poucas semanas. Primeiro a gente entende como você vende, depois monta o funil, conecta o WhatsApp, configura as automações e treina o time. Você não recebe um sistema vazio pra virar sozinho. Recebe a operação montada e funcionando."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso saber de tecnologia pra usar a Kommo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. Se você usa WhatsApp, você consegue usar a Kommo. A tela é simples e o time aprende rápido. E na implementação eu treino todo mundo até a ferramenta virar rotina. A parte técnica fica comigo, você foca em vender."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Meu time pequeno consegue usar a Kommo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A Kommo funciona pra time de qualquer tamanho, de dois vendedores a dezenas. Pra time pequeno, ela ajuda ainda mais, porque organiza o atendimento sem precisar contratar mais gente. Cada pessoa rende mais com o processo montado."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Kommo tem versão em português?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A Kommo é toda em português, do sistema ao suporte. E comigo, o atendimento e a implementação são em português do começo ao fim, com quem entende o mercado brasileiro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Kommo tem chatbot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A Kommo tem o Salesbot, um bot que você monta sem programar, no arrasta-e-solta. Ele responde, coleta dados e encaminha o cliente sozinho. É parecido com o ManyChat, mas roda dentro do CRM, então tudo que o bot faz já fica registrado no funil."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O agente de IA responde sozinho de verdade?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. O agente de IA da Kommo entende a mensagem do cliente e responde como uma pessoa, a qualquer hora. Ele qualifica o lead, tira dúvida, agenda reunião e move a venda no funil sozinho. Você configura o que ele pode fazer, e ele cuida do atendimento enquanto o time foca em fechar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto custa a Kommo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Kommo cobra por usuário, por mês, a partir de R$ 76 no plano Básico. O valor depende do plano e do tamanho do time, e o pagamento é em dólar, então o fechamento segue a cotação do dia. Comigo, você ainda ganha um mês grátis. Se quiser o valor exato pro seu time hoje, é só me chamar que eu faço o cálculo na hora."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Kommo tem versão grátis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Kommo tem um período de teste gratuito pra você conhecer a ferramenta. Depois disso, é um sistema pago, cobrado por usuário. Não existe versão grátis pra sempre, porque é uma ferramenta profissional de vendas. Mas dá pra testar antes de decidir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que contratar com você e não direto no site da Kommo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Porque comprar direto é receber a ferramenta vazia pra configurar sozinho. Comigo, você recebe a operação montada: funil, WhatsApp, automação e time treinado, com o Método OCV. Ainda ganha suporte prioritário e um mês grátis pela parceria. Custa o mesmo, mas você não começa do zero nem sozinho."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A Kommo substitui meu ERP ou sistema de gestão?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. A Kommo é um CRM de vendas, não um ERP. Ela organiza o comercial, do primeiro contato ao fechamento, mas não controla estoque, nota fiscal ou financeiro. Se você precisa de gestão completa, a Kommo cuida da parte de vendas e pode se conectar ao seu sistema de gestão."
+      }
+    }
+  ]
+}
+</script>
 
 </body>
 </html>
