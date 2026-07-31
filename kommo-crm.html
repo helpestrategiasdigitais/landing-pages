@@ -1056,6 +1056,44 @@
 
     .plans-note strong { color: var(--gold2); }
 
+    /* ── HONESTIDADE ── */
+    #honestidade {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Duas colunas: sao paragrafos longos, em 3 ou 4 ficariam estreitos. */
+    .honesto-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .honesto-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 30px 28px;
+      transition: border-color 0.3s;
+    }
+    .honesto-card:hover { border-color: rgba(255,255,255,0.14); }
+
+    .honesto-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .honesto-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
     /* ── CTA FINAL ── */
     #cta {
       background:
@@ -1163,6 +1201,7 @@
       .pilares-grid { grid-template-columns: 1fr; }
       .visao-wrapper { padding: 32px 24px; margin-top: 56px; }
       .plans-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .honesto-grid { grid-template-columns: 1fr; }
 
       /* No mobile a tabela vira duas listas: primeiro a coluna da esquerda
          (celulas impares), depois a da direita (pares). */
@@ -1706,6 +1745,34 @@
   </div>
   <p class="plans-destaque">Quanto mais longo o ciclo, menor o valor por mês. Fechando 24 meses, você paga até <strong>25% menos</strong>. E comprando comigo, ainda ganha <strong>1 mês grátis</strong>.</p>
   <p class="plans-note">Valores de referência com o dólar a R$ 5,08. A Kommo cobra em dólar, então o fechamento segue a cotação comercial do dia. O plano Básico começa em 3 usuários. O mês grátis vale a partir de 3 usuários no Básico e 2 nos planos Avançado e Pro.</p>
+</section>
+
+<!-- HONESTIDADE -->
+<section id="honestidade">
+  <div class="section-header centered">
+    <div class="section-tag">Honestidade</div>
+    <h2 class="section-title">Quando a Kommo <em>não é a melhor escolha?</em></h2>
+    <p class="section-lead">Eu vendo Kommo todo dia, mas não pra todo mundo. Se o seu caso é um destes, eu prefiro te dizer antes.</p>
+  </div>
+  <div class="honesto-grid">
+    <div class="honesto-card">
+      <h3>Se você procura um ERP</h3>
+      <p>A Kommo é um CRM de vendas, não um sistema de gestão. Ela não controla estoque, não emite nota fiscal, não cuida do financeiro. Se é isso que você precisa, a Kommo sozinha não resolve. O que ela faz é organizar a venda, do primeiro contato ao fechamento.</p>
+    </div>
+    <div class="honesto-card">
+      <h3>Se o seu negócio não vende por mensagem</h3>
+      <p>A Kommo foi feita pra quem vende conversando, no WhatsApp, no Instagram, no direct. Se a sua venda é toda presencial, no balcão, sem mensagem no meio do caminho, você não vai usar nem metade da força dela.</p>
+    </div>
+    <div class="honesto-card">
+      <h3>Se você não quer largar a planilha</h3>
+      <p>Se a sua planilha já resolve e você não pretende mudar como o time trabalha, a Kommo vira só um custo a mais. A ferramenta muda o jogo pra quem está disposto a organizar o processo, não pra quem quer manter tudo como está.</p>
+    </div>
+    <div class="honesto-card">
+      <h3>Se você quer só o preço, sem o processo</h3>
+      <p>Se a sua única pergunta é qual o mais barato, eu não sou a pessoa certa. Eu não vendo a licença mais barata. Eu vendo a operação montada e funcionando. Quem quer só o software solto encontra em qualquer revendedor.</p>
+    </div>
+  </div>
+  <p class="ocv-fecho">Se nenhuma dessas é o seu caso, então a Kommo provavelmente é exatamente o que o seu comercial precisa. E aí eu posso ajudar.</p>
 </section>
 
 <!-- CTA FINAL -->
