@@ -880,17 +880,21 @@
 
     .plans-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 900px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1180px;
       margin: 0 auto;
     }
 
+    /* Flex na vertical pra lista esticar e os botoes ficarem na mesma linha,
+       mesmo com os cards tendo quantidades diferentes de recurso. */
     .plan-card {
+      display: flex;
+      flex-direction: column;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: var(--radius);
-      padding: 36px 28px;
+      padding: 36px 24px;
       text-align: center;
       transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
       position: relative;
@@ -930,22 +934,42 @@
       margin-bottom: 16px;
     }
 
+    .plan-prefix {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
     .plan-price {
-      font-size: 2.6rem;
+      font-size: 2.2rem;
       font-weight: 900;
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      line-height: 1;
+      line-height: 1.1;
       letter-spacing: -0.03em;
       margin-bottom: 4px;
     }
 
+    /* "Sob medida" e texto, nao numero, entao pede corpo menor pra caber. */
+    .plan-price.texto { font-size: 1.6rem; }
+
     .plan-unit {
       font-size: 0.78rem;
       color: var(--muted);
-      margin-bottom: 24px;
+      min-height: 1.2em;
+      margin-bottom: 16px;
+    }
+
+    /* Linha de apoio: pra quem e aquele plano. */
+    .plan-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.55;
+      padding-top: 16px;
+      margin-bottom: 20px;
+      border-top: 1px solid rgba(255,255,255,0.07);
     }
 
     .plan-features {
@@ -954,6 +978,7 @@
       gap: 10px;
       margin-bottom: 28px;
       text-align: left;
+      flex: 1;
     }
 
     .plan-feature {
@@ -1002,15 +1027,31 @@
       background: rgba(201,168,76,0.08);
     }
 
+    /* Linha de destaque logo abaixo dos cards. */
+    .plans-destaque {
+      text-align: center;
+      max-width: 780px;
+      margin: 40px auto 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.65;
+      padding: 20px 26px;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 14px;
+    }
+    .plans-destaque strong { color: var(--gold2); font-weight: 700; }
+
     .plans-note {
       text-align: center;
-      margin-top: 28px;
-      font-size: 0.82rem;
+      margin-top: 24px;
+      font-size: 0.8rem;
       color: var(--muted);
-      max-width: 560px;
+      max-width: 760px;
       margin-left: auto;
       margin-right: auto;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .plans-note strong { color: var(--gold2); }
@@ -1109,7 +1150,7 @@
       .quem-wrapper { grid-template-columns: 1fr; gap: 32px; max-width: 620px; }
       .quem-foto { aspect-ratio: 4 / 3; }
 
-      .plans-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .plans-grid { grid-template-columns: repeat(2, 1fr); max-width: 620px; }
     }
 
     @media (max-width: 600px) {
@@ -1121,6 +1162,7 @@
       .resultado-panel { padding: 40px 24px; margin-top: 56px; }
       .pilares-grid { grid-template-columns: 1fr; }
       .visao-wrapper { padding: 32px 24px; margin-top: 56px; }
+      .plans-grid { grid-template-columns: 1fr; max-width: 420px; }
 
       /* No mobile a tabela vira duas listas: primeiro a coluna da esquerda
          (celulas impares), depois a da direita (pares). */
@@ -1597,52 +1639,73 @@
 <!-- PLANOS -->
 <section id="planos">
   <div class="section-header centered">
-    <div class="section-tag">Planos</div>
-    <h2 class="section-title">Escolha o plano<br/><em>certo para o seu time</em></h2>
-    <p class="section-lead">Todos os planos incluem implementação guiada e treinamento. Você não começa sozinho.</p>
+    <div class="section-tag">Preço</div>
+    <h2 class="section-title">Quanto custa a <em>Kommo?</em></h2>
+    <p class="section-lead">A Kommo cobra por usuário, por mês. Você paga só pelo tamanho do seu time. E em todo plano, você tem implementação e treinamento comigo. Não começa sozinho.</p>
   </div>
   <div class="plans-grid">
     <div class="plan-card">
       <div class="plan-name">Básico</div>
-      <div class="plan-price">$15</div>
+      <div class="plan-prefix">a partir de</div>
+      <div class="plan-price">R$ 76</div>
       <div class="plan-unit">por usuário / mês</div>
+      <p class="plan-desc">Para o time pequeno começando a organizar o comercial</p>
       <div class="plan-features">
         <div class="plan-feature">Funil de vendas visual</div>
-        <div class="plan-feature">Inbox unificado</div>
-        <div class="plan-feature">Integrações de canais</div>
-        <div class="plan-feature">Relatórios básicos</div>
+        <div class="plan-feature">Atendimento unificado num só lugar</div>
+        <div class="plan-feature">Painel de acompanhamento</div>
+        <div class="plan-feature">Sugestões de resposta com IA</div>
+        <div class="plan-feature">Até 2.500 leads por usuário</div>
       </div>
       <a class="plan-cta outline" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20encontrei%20o%20seu%20site%20e%20quero%20entender%20como%20organizar%20o%20comercial%20da%20minha%20empresa%20usando%20a%20kommo." target="_blank" rel="noopener">Falar com Marco</a>
     </div>
     <div class="plan-card featured">
       <div class="plan-featured-tag">Mais escolhido</div>
       <div class="plan-name">Avançado</div>
-      <div class="plan-price">$25</div>
+      <div class="plan-prefix">a partir de</div>
+      <div class="plan-price">R$ 127</div>
       <div class="plan-unit">por usuário / mês</div>
+      <p class="plan-desc">Para quem já precisa de automação e agente de IA</p>
       <div class="plan-features">
         <div class="plan-feature">Tudo do Básico</div>
-        <div class="plan-feature">Salesbot e automações</div>
-        <div class="plan-feature">API oficial WhatsApp</div>
-        <div class="plan-feature">Relatórios avançados</div>
-        <div class="plan-feature">Múltiplos pipelines</div>
+        <div class="plan-feature">Automação de tarefas e follow-up</div>
+        <div class="plan-feature">Salesbot (bot sem código)</div>
+        <div class="plan-feature">Até 3 agentes de IA</div>
+        <div class="plan-feature">Até 5.000 leads por usuário</div>
       </div>
       <a class="plan-cta" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20encontrei%20o%20seu%20site%20e%20quero%20entender%20como%20organizar%20o%20comercial%20da%20minha%20empresa%20usando%20a%20kommo." target="_blank" rel="noopener">Falar com Marco</a>
     </div>
     <div class="plan-card">
       <div class="plan-name">Pro</div>
-      <div class="plan-price">$45</div>
+      <div class="plan-prefix">a partir de</div>
+      <div class="plan-price">R$ 229</div>
       <div class="plan-unit">por usuário / mês</div>
+      <p class="plan-desc">Para times com alto volume que querem escala</p>
       <div class="plan-features">
         <div class="plan-feature">Tudo do Avançado</div>
-        <div class="plan-feature">Agente de IA</div>
-        <div class="plan-feature">Perfil de lead com IA</div>
-        <div class="plan-feature">Prioridade no suporte</div>
-        <div class="plan-feature">Acesso a todas as integrações</div>
+        <div class="plan-feature">Até 50 agentes de IA</div>
+        <div class="plan-feature">Agendamento de consultas por IA</div>
+        <div class="plan-feature">Canais ilimitados</div>
+        <div class="plan-feature">Até 10.000 leads por usuário</div>
+      </div>
+      <a class="plan-cta outline" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20encontrei%20o%20seu%20site%20e%20quero%20entender%20como%20organizar%20o%20comercial%20da%20minha%20empresa%20usando%20a%20kommo." target="_blank" rel="noopener">Falar com Marco</a>
+    </div>
+    <div class="plan-card">
+      <div class="plan-name">Empresarial</div>
+      <div class="plan-prefix">&nbsp;</div>
+      <div class="plan-price texto">Sob medida</div>
+      <div class="plan-unit"></div>
+      <p class="plan-desc">Para grandes operações com necessidade específica</p>
+      <div class="plan-features">
+        <div class="plan-feature">Tudo do Pro</div>
+        <div class="plan-feature">Segurança e controle empresarial</div>
+        <div class="plan-feature">Gerente de conta dedicado</div>
       </div>
       <a class="plan-cta outline" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20encontrei%20o%20seu%20site%20e%20quero%20entender%20como%20organizar%20o%20comercial%20da%20minha%20empresa%20usando%20a%20kommo." target="_blank" rel="noopener">Falar com Marco</a>
     </div>
   </div>
-  <p class="plans-note">Ciclo mínimo de 6 meses. <strong>Bônus: 1 mês extra de graça</strong> ao contratar pela parceria oficial com Marco Cordeiro.</p>
+  <p class="plans-destaque">Quanto mais longo o ciclo, menor o valor por mês. Fechando 24 meses, você paga até <strong>25% menos</strong>. E comprando comigo, ainda ganha <strong>1 mês grátis</strong>.</p>
+  <p class="plans-note">Valores de referência com o dólar a R$ 5,08. A Kommo cobra em dólar, então o fechamento segue a cotação comercial do dia. O plano Básico começa em 3 usuários. O mês grátis vale a partir de 3 usuários no Básico e 2 nos planos Avançado e Pro.</p>
 </section>
 
 <!-- CTA FINAL -->
