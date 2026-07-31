@@ -8,6 +8,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Dado estruturado: diz ao Google que a Help e uma empresa fisica em Cascavel. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Help Estratégias Digitais",
+    "description": "Parceiro Gold Kommo no Brasil. Implementação de CRM, organização comercial e automação de vendas pelo WhatsApp.",
+    "url": "https://marcocordeiro.com.br/",
+    "image": "https://marcocordeiro.com.br/minha-foto-kommo.jpeg",
+    "telephone": "+5545991193668",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Cuiabá, 5057",
+      "addressLocality": "Cascavel",
+      "addressRegion": "PR",
+      "addressCountry": "BR"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Marco Cordeiro",
+      "jobTitle": "Fundador"
+    },
+    "areaServed": "BR",
+    "sameAs": [
+      "https://www.kommo.com/br/parceiros/encontrar-parceiro/help-estrategias-digitais/"
+    ]
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -490,6 +519,244 @@
       line-height: 1.7;
     }
 
+    /* ── MÉTODO OCV ── */
+    #metodo {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .ocv-part-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 44px;
+    }
+
+    .ocv-part-header h3 {
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    .ocv-part-header h3 em { font-style: normal; color: var(--gold); }
+
+    .ocv-part-header p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* 5 pilares: 3 em cima e 2 centralizados embaixo, via grid de 6 colunas. */
+    .pilares-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pilar-card {
+      grid-column: span 2;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .pilar-card:nth-child(4) { grid-column: 2 / span 2; }
+    .pilar-card:nth-child(5) { grid-column: 4 / span 2; }
+    .pilar-card:hover {
+      border-color: rgba(201,168,76,0.25);
+      transform: translateY(-4px);
+    }
+
+    .pilar-num {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.85rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .pilar-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .pilar-card p {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .ocv-fecho {
+      max-width: 720px;
+      margin: 40px auto 0;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 28px;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 14px;
+    }
+
+    /* Visao OCV: bloco em duas colunas com barra dourada na lateral. */
+    .visao-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 88px auto 0;
+      padding: 44px 40px;
+      background: linear-gradient(135deg, rgba(26,58,107,0.3) 0%, rgba(10,22,40,0.8) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--gold);
+      border-radius: 20px;
+    }
+
+    .visao-wrapper h3 {
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+    .visao-wrapper h3 em { font-style: normal; color: var(--gold); }
+
+    .visao-wrapper p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── COMPARATIVO ── */
+    #comparativo {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Cada celula e um item do grid, entao as duas colunas alinham linha a
+       linha mesmo com textos de tamanhos diferentes. */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 16px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .compare-head {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--muted);
+      padding: 16px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .compare-cell {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* Coluna do parceiro: fundo dourado suave e moldura pra puxar o olho. */
+    .compare-head.destaque,
+    .compare-cell.destaque {
+      background: rgba(201,168,76,0.06);
+      border-left: 1px solid rgba(201,168,76,0.35);
+      border-right: 1px solid rgba(201,168,76,0.35);
+      border-bottom-color: rgba(201,168,76,0.18);
+    }
+
+    .compare-head.destaque {
+      color: var(--gold);
+      border-top: 1px solid rgba(201,168,76,0.35);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .compare-cell.destaque {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .compare-grid > :last-child {
+      border-bottom: 1px solid rgba(201,168,76,0.35);
+      border-radius: 0 0 12px 12px;
+    }
+
+    .compare-nota {
+      max-width: 900px;
+      margin: 28px auto 0;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── QUEM SOU ── */
+    #quem-sou {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Coluna da foto um pouco mais estreita pra sobrar largura ao texto. */
+    .quem-wrapper {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      gap: 56px;
+      align-items: start;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* A foto original e deitada e o Marco fica no centro, entao o corte em
+       retrato mantem ele inteiro e tira so o vazio das laterais. */
+    .quem-foto {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+      border-radius: 20px;
+      border: 1px solid rgba(201,168,76,0.25);
+    }
+
+    .quem-bio p {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .quem-bio p:last-child { margin-bottom: 0; }
+
+    .quem-sede {
+      display: flex;
+      justify-content: center;
+      margin-top: 48px;
+    }
+
+    .quem-sede address {
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 50px;
+      padding: 10px 22px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
     /* ── POR QUE MARCO ── */
     #diferenciais {
       background: linear-gradient(180deg, var(--navy2) 0%, var(--navy) 100%);
@@ -829,6 +1096,19 @@
       .situacoes-grid { grid-template-columns: repeat(2, 1fr); }
       .resultado-grid { grid-template-columns: repeat(2, 1fr); }
 
+      /* Sem as 6 colunas, os pilares voltam a ocupar uma celula cada. */
+      .pilares-grid { grid-template-columns: repeat(2, 1fr); }
+      .pilar-card,
+      .pilar-card:nth-child(4),
+      .pilar-card:nth-child(5) { grid-column: auto; }
+
+      .visao-wrapper { grid-template-columns: 1fr; gap: 24px; }
+
+      /* Foto em cima e texto embaixo, com corte menos alto pra nao ocupar
+         a tela inteira do celular. */
+      .quem-wrapper { grid-template-columns: 1fr; gap: 32px; max-width: 620px; }
+      .quem-foto { aspect-ratio: 4 / 3; }
+
       .plans-grid { grid-template-columns: 1fr; max-width: 420px; }
     }
 
@@ -839,6 +1119,16 @@
       .situacoes-grid { grid-template-columns: 1fr; }
       .resultado-grid { grid-template-columns: 1fr; gap: 28px; }
       .resultado-panel { padding: 40px 24px; margin-top: 56px; }
+      .pilares-grid { grid-template-columns: 1fr; }
+      .visao-wrapper { padding: 32px 24px; margin-top: 56px; }
+
+      /* No mobile a tabela vira duas listas: primeiro a coluna da esquerda
+         (celulas impares), depois a da direita (pares). */
+      .compare-grid { grid-template-columns: 1fr; row-gap: 0; }
+      .compare-grid > :nth-child(odd) { order: 1; }
+      .compare-grid > :nth-child(even) { order: 2; }
+      .compare-head.destaque { margin-top: 28px; }
+      .compare-grid > :last-child { border-radius: 0 0 12px 12px; }
 
       /* Hero compacto no mobile: menos respiro vertical entre os elementos.
          100svh usa a altura visivel real do navegador, sem contar a barra de
@@ -1134,6 +1424,112 @@
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- MÉTODO OCV -->
+<section id="metodo">
+  <div class="section-header centered">
+    <div class="section-tag">Por que comigo</div>
+    <h2 class="section-title">Comigo você não compra uma ferramenta.<br/><em>Compra uma operação que vende.</em></h2>
+    <p class="section-lead">Qualquer um vende a licença da Kommo. A diferença é o que vem junto: método, acompanhamento e um jeito de organizar o comercial que já funcionou em centenas de empresas.</p>
+  </div>
+
+  <div class="ocv-part-header">
+    <h3>Método <em>OCV</em>: Organização Comercial que Vende</h3>
+    <p>A Kommo é a ferramenta. O Método OCV é o que faz ela vender. É a forma que eu uso pra transformar um comercial bagunçado numa operação que roda sozinha, apoiada em cinco pilares:</p>
+  </div>
+
+  <div class="pilares-grid">
+    <div class="pilar-card">
+      <div class="pilar-num">1</div>
+      <h4>Processo</h4>
+      <p>O passo a passo da venda montado, do primeiro contato ao fechamento, pra todo mundo seguir igual.</p>
+    </div>
+    <div class="pilar-card">
+      <div class="pilar-num">2</div>
+      <h4>Time</h4>
+      <p>As pessoas certas nos lugares certos, sabendo o que fazer e como usar a ferramenta.</p>
+    </div>
+    <div class="pilar-card">
+      <div class="pilar-num">3</div>
+      <h4>Kommo</h4>
+      <p>O CRM configurado pra realidade do seu negócio, não do jeito genérico.</p>
+    </div>
+    <div class="pilar-card">
+      <div class="pilar-num">4</div>
+      <h4>Automação</h4>
+      <p>Automatiza as tarefas repetitivas da venda. Move o lead de etapa, dispara a mensagem na hora certa, cria a tarefa e envia o lembrete. O que era feito na mão passa a acontecer sozinho.</p>
+    </div>
+    <div class="pilar-card">
+      <div class="pilar-num">5</div>
+      <h4>IA</h4>
+      <p>O agente que entende a conversa e faz o trabalho. Responde como gente, qualifica o lead, preenche os dados, movimenta o funil e agenda a reunião ou consulta sozinho.</p>
+    </div>
+  </div>
+
+  <p class="ocv-fecho">Não é sobre instalar um sistema. É sobre organizar o comercial pra ele parar de depender de sorte.</p>
+
+  <div class="visao-wrapper">
+    <h3>Visão OCV: <em>você não pode melhorar o que não enxerga</em></h3>
+    <p>Depois que tudo está rodando, você precisa enxergar. O Visão OCV é o painel que conecta na sua conta e mostra o que importa em tempo real: quanto entrou, onde a venda trava, como cada vendedor está indo. É a gestão à vista que vira decisão, não achismo.</p>
+  </div>
+</section>
+
+<!-- DIRETO OU COM PARCEIRO -->
+<section id="comparativo">
+  <div class="section-header centered">
+    <div class="section-tag">Direto ou com parceiro</div>
+    <h2 class="section-title">Comprar direto ou <em>comprar comigo?</em></h2>
+    <p class="section-lead">A Kommo não implementa. Ela entrega a ferramenta, e a configuração fica por sua conta. Veja a diferença de contratar com um parceiro Gold.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-head">Comprando direto</div>
+    <div class="compare-head destaque">Comprando comigo</div>
+
+    <div class="compare-cell">Você recebe o sistema vazio e configura sozinho.</div>
+    <div class="compare-cell destaque">Implementação completa: funil, WhatsApp, automação e time treinado.</div>
+
+    <div class="compare-cell">Só o suporte da Kommo, na fila comum.</div>
+    <div class="compare-cell destaque">Dois suportes: o meu, direto, e o da Kommo, prioritário.</div>
+
+    <div class="compare-cell">Sem bônus.</div>
+    <div class="compare-cell destaque">Um mês grátis na assinatura.</div>
+
+    <div class="compare-cell">Você aprende a ferramenta no tentativa e erro.</div>
+    <div class="compare-cell destaque">Método OCV aplicado, do processo à IA.</div>
+
+    <div class="compare-cell">Sozinho depois da compra.</div>
+    <div class="compare-cell destaque">Acompanhamento de quem já implementou 255 vezes.</div>
+  </div>
+
+  <p class="compare-nota">O suporte prioritário e o mês grátis seguem as regras do programa de parceiros Kommo. O mês grátis vale a partir de 3 usuários no plano Base e 2 usuários nos planos Advanced e Pro.</p>
+
+  <p class="ocv-fecho">No fim, comprar direto é comprar uma caixa de ferramentas. Comprar comigo é receber a operação montada e funcionando.</p>
+</section>
+
+<!-- QUEM SOU -->
+<section id="quem-sou">
+  <div class="section-header centered">
+    <div class="section-tag">Quem sou</div>
+    <h2 class="section-title">Quem está <em>por trás disso</em></h2>
+  </div>
+
+  <div class="quem-wrapper">
+    <img class="quem-foto" src="minha-foto-kommo.jpeg" loading="lazy" decoding="async"
+         alt="Marco Cordeiro, fundador da Help Estratégias Digitais, no palco de um evento da Kommo" />
+    <div class="quem-bio">
+      <p>Comecei a trabalhar aos 13 anos, numa locadora de vídeo. Depois fui frentista de posto, gestor de loja, vendedor. Cada emprego me ensinou uma parte de como as coisas de verdade acontecem no chão de uma empresa.</p>
+      <p>Em 2011 fiz um curso de webmaster e tive meu primeiro contato com tecnologia. Mas foi no comercial que eu fiquei. Fiz faculdade de gestão comercial, dois MBAs, mergulhei em vendas e inbound. Virei gestor de uma operação nacional, vendendo serviço, equipamento e curso pro Brasil todo. Passei de 50 milhões em vendas e implementei meu primeiro CRM já em 2013.</p>
+      <p>Em 2022 conheci a Kommo. E foi como ver, numa ferramenta só, tudo que eu tinha aprendido em mais de dez anos de comercial. Em 2024 abri a Help, sozinho, trabalhando de casa enquanto ainda tinha outro emprego. Larguei a segurança e apostei tudo. Em seis meses, virei parceiro Gold da Kommo.</p>
+      <p>Hoje, em 2026, a Help é um time de seis pessoas, num escritório próprio, atendendo o Brasil inteiro e dedicado exclusivamente à Kommo.</p>
+      <p>Eu não venho da tecnologia. Conheci ela cedo, em 2011. Mas foi na rua, no balcão, na meta pra bater, que eu me formei de verdade. Por isso quando eu organizo o seu comercial, não é teoria. É o que eu vivi.</p>
+    </div>
+  </div>
+
+  <div class="quem-sede">
+    <address>Help Estratégias Digitais · Rua Cuiabá, 5057 · Cascavel, PR</address>
   </div>
 </section>
 
