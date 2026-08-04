@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A API oficial do WhatsApp é a conexão da Meta para empresas: time inteiro no mesmo número, disparo em massa aprovado e automação com IA, sem banimento." />
+  <title>API Oficial do WhatsApp: o que é, quanto custa e como ativar | Marco Cordeiro</title>
+  <link rel="canonical" href="https://marcocordeiro.com.br/api-oficial-whatsapp" />
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-K7LNFJB6');</script>
+  <!-- End Google Tag Manager -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Dado estruturado: mesma empresa da /kommo-crm, repetido aqui pro Google
+       ligar esta pagina a Help. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Help Estratégias Digitais",
+    "description": "Parceiro Gold Kommo no Brasil. Implementação de CRM, organização comercial e automação de vendas pelo WhatsApp.",
+    "url": "https://marcocordeiro.com.br/",
+    "image": "https://marcocordeiro.com.br/minha-foto-kommo.jpeg",
+    "telephone": "+5545991193668",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Cuiabá, 5057",
+      "addressLocality": "Cascavel",
+      "addressRegion": "PR",
+      "addressCountry": "BR"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Marco Cordeiro",
+      "jobTitle": "Fundador"
+    },
+    "areaServed": "BR",
+    "sameAs": [
+      "https://www.kommo.com/br/parceiros/encontrar-parceiro/help-estrategias-digitais/"
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0A1628;
+      --navy2:  #0F2040;
+      --blue:   #1A3A6B;
+      --gold:   #C9A84C;
+      --gold2:  #E8C56A;
+      --white:  #FFFFFF;
+      --gray:   #F4F6FA;
+      --text:   #E8EDF5;
+      --muted:  #8FA3C0;
+      --radius: 12px;
+      --shadow: 0 4px 32px rgba(0,0,0,0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      /* so o selo no topo, entao fica centralizado */
+      justify-content: center;
+      align-items: center;
+      padding: 18px 5%;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .badge-nav {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50px;
+      padding: 4px 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      /* o selo tambem leva de volta pra home */
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .badge-nav:hover {
+      background: rgba(201,168,76,0.2);
+      border-color: rgba(201,168,76,0.5);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 5% 80px;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,58,107,0.55) 0%, transparent 70%),
+        linear-gradient(160deg, var(--navy) 0%, #071020 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(26,58,107,0.3) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    #hero h1 {
+      font-size: clamp(1.9rem, 4.4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.12;
+      max-width: 900px;
+      margin-bottom: 28px;
+      letter-spacing: -0.02em;
+    }
+
+    #hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    /* Resposta direta: e o trecho que o Google mostra e a IA cita, entao
+       ganha destaque de bloco, nao de paragrafo solto. */
+    .resposta-direta {
+      position: relative;
+      max-width: 760px;
+      margin-bottom: 28px;
+      padding: 24px 28px;
+      font-size: clamp(0.98rem, 1.8vw, 1.1rem);
+      color: var(--text);
+      line-height: 1.7;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 14px;
+      text-align: left;
+    }
+
+    .hero-sub {
+      position: relative;
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 44px;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(201,168,76,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.01em;
+      position: relative;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201,168,76,0.5);
+    }
+    .btn-primary svg { width: 20px; height: 20px; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px; height: 32px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 96px 5%; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-title em { font-style: normal; color: var(--gold); }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .section-header { margin-bottom: 56px; }
+    .centered { text-align: center; }
+    .centered .section-lead { margin: 0 auto; }
+
+    /* Bloco de texto corrido, centralizado, pros trechos explicativos. */
+    .bloco-texto {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .bloco-texto p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .bloco-texto p:last-child { margin-bottom: 0; }
+    .bloco-texto strong { color: var(--text); font-weight: 700; }
+
+    /* Intro curta acima de um grid, sem virar um section-header inteiro. */
+    .bloco-intro {
+      max-width: 780px;
+      margin: 0 auto 44px;
+      text-align: center;
+      font-size: 0.98rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .bloco-intro strong { color: var(--text); font-weight: 700; }
+
+    /* Caixa dourada de fecho no fim de um bloco. */
+    .fecho {
+      max-width: 780px;
+      margin: 40px auto 0;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 28px;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 14px;
+    }
+
+    .nota {
+      max-width: 900px;
+      margin: 28px auto 0;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* Link dentro de texto corrido. */
+    .link-texto {
+      color: var(--gold2);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+    .link-texto:hover { color: var(--gold); }
+
+    /* ── A ESCADA ── */
+    #escada {
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%);
+    }
+
+    .lista-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .lista-cards.duas { grid-template-columns: repeat(2, 1fr); max-width: 980px; }
+    .lista-cards.quatro { grid-template-columns: repeat(4, 1fr); max-width: 1240px; }
+
+    /* Fio dourado na lateral, igual aos cards de situacao da /kommo-crm. */
+    .lista-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 2px solid rgba(201,168,76,0.35);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .lista-card:hover {
+      border-color: rgba(201,168,76,0.25);
+      border-left-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .lista-card h3 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .lista-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── O CERCO ── */
+    #cerco {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Cada noticia e um card com a fonte em destaque. */
+    .fonte-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 980px;
+      margin: 32px auto 0;
+      list-style: none;
+    }
+
+    .fonte-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 26px 24px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      transition: border-color 0.3s;
+    }
+    .fonte-item:hover { border-color: rgba(201,168,76,0.25); }
+
+    .fonte-item a {
+      font-weight: 700;
+      color: var(--gold2);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+    .fonte-item a:hover { color: var(--gold); }
+
+    /* ── API NÃO OFICIAL ── */
+    #nao-oficial {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* O wrapper segura a rolagem lateral em tela media, antes do layout
+       empilhado do celular entrar. */
+    .tabela-wrap {
+      max-width: 980px;
+      margin: 44px auto 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tabela-api {
+      width: 100%;
+      min-width: 640px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .tabela-api th,
+    .tabela-api td {
+      padding: 16px 20px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      vertical-align: top;
+    }
+
+    .tabela-api thead th {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .tabela-api tbody th {
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .tabela-api td { color: var(--muted); }
+
+    /* Coluna da API oficial: fundo dourado suave e moldura pra puxar o olho. */
+    .tabela-api .destaque {
+      background: rgba(201,168,76,0.06);
+      border-left: 1px solid rgba(201,168,76,0.35);
+      border-right: 1px solid rgba(201,168,76,0.35);
+      border-bottom-color: rgba(201,168,76,0.18);
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .tabela-api thead .destaque {
+      color: var(--gold);
+      border-top: 1px solid rgba(201,168,76,0.35);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .tabela-api tbody tr:last-child .destaque {
+      border-bottom: 1px solid rgba(201,168,76,0.35);
+      border-radius: 0 0 12px 12px;
+    }
+
+    /* ── CUSTO ── */
+    #custo {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .num-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .num-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .num-card:hover {
+      border-color: rgba(201,168,76,0.25);
+      transform: translateY(-4px);
+    }
+
+    .num-badge {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.85rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .num-card h3 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .num-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .bloco-texto.pos-grid { margin-top: 44px; }
+
+    /* ── PLATAFORMA ── */
+    #plataforma {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── KOMMO ── */
+    #kommo {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── O QUE LIBERA ── */
+    #libera {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ── QUEM SOU ── */
+    #quem-sou {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Coluna da foto um pouco mais estreita pra sobrar largura ao texto. */
+    .quem-wrapper {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      gap: 56px;
+      align-items: center;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* A foto original e deitada e o Marco fica no centro, entao o corte em
+       retrato mantem ele inteiro e tira so o vazio das laterais. */
+    .quem-foto {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+      border-radius: 20px;
+      border: 1px solid rgba(201,168,76,0.25);
+    }
+
+    .quem-bio p {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .quem-bio p:last-child { margin-bottom: 0; }
+
+    .quem-sede {
+      display: flex;
+      justify-content: center;
+      margin-top: 48px;
+    }
+
+    .quem-sede address {
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 50px;
+      padding: 10px 22px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ── FAQ ── */
+    #faq {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Acordeao nativo com details/summary: sem JS e ja acessivel pelo
+       teclado. O atributo name deixa so uma resposta aberta por vez. */
+    .faq-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      transition: border-color 0.3s;
+    }
+    .faq-item[open] { border-color: rgba(201,168,76,0.3); }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.45;
+      transition: color 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--gold2); }
+
+    /* Seta em CSS, sem imagem nem emoji. */
+    .faq-item summary::after {
+      content: '';
+      flex-shrink: 0;
+      width: 9px; height: 9px;
+      margin-top: -4px;
+      border-right: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      transform: rotate(45deg);
+      transition: transform 0.25s, margin 0.25s;
+    }
+    .faq-item[open] summary::after {
+      transform: rotate(-135deg);
+      margin-top: 4px;
+    }
+
+    .faq-answer {
+      padding: 0 24px 22px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── CTA FINAL ── */
+    #cta {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(26,58,107,0.6) 0%, transparent 70%),
+        var(--navy);
+      text-align: center;
+      padding: 112px 5%;
+    }
+
+    #cta .section-title { max-width: 760px; margin: 0 auto 24px; }
+    #cta .bloco-texto { margin-bottom: 44px; }
+    #cta .bloco-texto p { text-align: center; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060E1A;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer .logo { font-size: 0.95rem; }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-badge {
+      width: 100%;
+      text-align: center;
+    }
+
+    .footer-badge img {
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .footer-badge img:hover { opacity: 1; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 200;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+    }
+    .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1150px) {
+      .lista-cards.quatro { grid-template-columns: repeat(2, 1fr); max-width: 980px; }
+    }
+
+    @media (max-width: 900px) {
+      .lista-cards { grid-template-columns: 1fr; max-width: 620px; }
+      .lista-cards.duas { grid-template-columns: 1fr; max-width: 620px; }
+      .lista-cards.quatro { grid-template-columns: 1fr; max-width: 620px; }
+      .fonte-list { grid-template-columns: 1fr; max-width: 620px; }
+      .num-grid { grid-template-columns: 1fr; max-width: 620px; }
+
+      /* Foto em cima e texto embaixo, com corte menos alto pra nao ocupar
+         a tela inteira do celular. */
+      .quem-wrapper { grid-template-columns: 1fr; gap: 32px; max-width: 620px; }
+      .quem-foto { aspect-ratio: 4 / 3; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 72px 5%; }
+      .resposta-direta { padding: 20px 20px; }
+      .faq-item summary { padding: 18px 18px; font-size: 0.92rem; }
+      .faq-answer { padding: 0 18px 20px; }
+
+      /* No celular a tabela vira uma lista de blocos: cada linha ganha o
+         nome do criterio no topo e cada celula carrega o nome da coluna. */
+      .tabela-wrap { overflow-x: visible; }
+      .tabela-api { min-width: 0; border-collapse: separate; border-spacing: 0; }
+      .tabela-api thead { display: none; }
+      .tabela-api tbody,
+      .tabela-api tbody tr { display: block; }
+
+      .tabela-api tbody tr {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: var(--radius);
+        padding: 6px 0;
+        margin-bottom: 14px;
+      }
+
+      .tabela-api tbody th {
+        display: block;
+        white-space: normal;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--white);
+        border-bottom: none;
+        padding-bottom: 6px;
+      }
+
+      .tabela-api tbody td {
+        display: block;
+        border-bottom: none;
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+
+      .tabela-api tbody td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 2px;
+      }
+
+      .tabela-api tbody .destaque,
+      .tabela-api tbody tr:last-child .destaque {
+        border: 1px solid rgba(201,168,76,0.35);
+        border-radius: 10px;
+        margin: 4px 16px 10px;
+        padding: 12px 14px;
+      }
+      .tabela-api tbody .destaque::before { color: var(--gold); }
+
+      /* Hero compacto no mobile: menos respiro vertical entre os elementos.
+         100svh usa a altura visivel real do navegador, sem contar a barra de
+         endereco, o que evita o vazio que sobrava com 100vh. */
+      #hero {
+        min-height: 100svh;
+        padding: 96px 5% 64px;
+      }
+      #hero h1 { margin-bottom: 20px; }
+      .resposta-direta { margin-bottom: 20px; }
+      .hero-sub { margin-bottom: 28px; }
+      .scroll-hint { bottom: 18px; }
+      .scroll-hint::after { height: 24px; }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* Telas curtas tipo iPhone SE: aperta mais o Hero pra tudo caber sem rolagem */
+    @media (max-width: 600px) and (max-height: 700px) {
+      #hero { padding: 84px 5% 56px; }
+      #hero h1 { margin-bottom: 14px; }
+      .resposta-direta { margin-bottom: 16px; }
+      .hero-sub { margin-bottom: 22px; }
+      .scroll-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K7LNFJB6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- NAV -->
+<nav>
+  <a class="badge-nav" href="index.html">Partner Gold Kommo</a>
+</nav>
+
+<main>
+
+<!-- BLOCO 1: TOPO -->
+<section id="hero">
+  <h1>API Oficial do WhatsApp: o que é, quanto custa e como ativar <em>sem perder seu número</em></h1>
+  <p class="resposta-direta">
+    A API oficial do WhatsApp é a conexão que a própria Meta criou para empresas usarem o WhatsApp de forma profissional: time inteiro atendendo no mesmo número, envio de mensagens em massa aprovado e automação com IA liberada. Tudo que derruba um número comum, aqui é permitido.
+  </p>
+  <p class="hero-sub">
+    Se sua empresa vende pelo WhatsApp e depende desse número pra faturar, esta página explica o que é a API oficial, quanto custa de verdade e o caminho certo pra ativar sem perder o número e o histórico de conversas.
+  </p>
+  <a class="btn-primary" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20encontrei%20o%20seu%20site%20e%20quero%20entender%20como%20organizar%20o%20comercial%20da%20minha%20empresa%20usando%20a%20kommo." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.048 23.617a.5.5 0 0 0 .614.63l5.998-1.572A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.358-.213-3.712.974.99-3.617-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+    Quero ativar a API oficial na minha empresa
+  </a>
+  <div class="scroll-hint">Role para baixo</div>
+</section>
+
+<!-- BLOCO 2: A ESCADA -->
+<section id="escada">
+  <div class="section-header centered">
+    <div class="section-tag">A escada</div>
+    <h2 class="section-title">WhatsApp comum, WhatsApp Business e API oficial: <em>qual a diferença?</em></h2>
+  </div>
+
+  <p class="bloco-intro">Existem três formas de usar o WhatsApp, e elas não foram feitas pro mesmo tamanho de operação:</p>
+
+  <div class="lista-cards">
+    <div class="lista-card">
+      <h3>WhatsApp comum.</h3>
+      <p>Feito pra pessoa física. Um número, um celular, conversa pessoal. Usar pra vender funciona até certo ponto, mas a Meta trata uso comercial em número pessoal como violação.</p>
+    </div>
+    <div class="lista-card">
+      <h3>WhatsApp Business (o aplicativo verde).</h3>
+      <p>Feito pro pequeno negócio que atende sozinho. Ganha catálogo, etiquetas e mensagem automática simples. Continua preso a um celular e um atendente por número.</p>
+    </div>
+    <div class="lista-card">
+      <h3>API oficial do WhatsApp.</h3>
+      <p>Feita pra empresa que tem time e volume. Não é um aplicativo, é uma conexão direta com a Meta que se liga a uma plataforma de atendimento. É ela que libera vários atendentes no mesmo número, disparo aprovado, chatbot e IA.</p>
+    </div>
+  </div>
+
+  <p class="fecho">A Meta criou essa escada de propósito: separar conversa pessoal de operação comercial. Empresa que cresce e continua no degrau errado é empresa marcada.</p>
+</section>
+
+<!-- BLOCO 3: O CERCO -->
+<section id="cerco">
+  <div class="section-header centered">
+    <div class="section-tag">Por que agora</div>
+    <h2 class="section-title">O cerco fechou: por que a busca por <em>API oficial explodiu</em></h2>
+  </div>
+
+  <div class="bloco-texto">
+    <p>A Meta está bloqueando números comuns usados de forma comercial. Disparo em massa, robô conectado por gambiarra, atalhos de automação em número pessoal: isso hoje é motivo de banimento. E quando o número cai, cai junto o histórico, os contatos e o canal por onde a empresa fatura.</p>
+    <p>Não sou eu dizendo. É notícia:</p>
+  </div>
+
+  <ul class="fonte-list">
+    <li class="fonte-item">
+      <a href="https://www.metropoles.com/metropoles-mais/usuarios-relatam-banimento-do-whatsapp-saiba-o-que-esta-ocorrendo" target="_blank" rel="noopener">Metrópoles</a>: usuários relatam banimentos repentinos de contas pessoais e comerciais, atingindo em cheio pequenos empreendedores que dependem do WhatsApp como canal principal. Entre os alvos, contas conversando com muitos números não salvos, o comportamento típico de quem vende.
+    </li>
+    <li class="fonte-item">
+      <a href="https://ndmais.com.br/tecnologia/whatsapp-bloqueia-contas-sem-explicacao-meta-admite-equivoco/" target="_blank" rel="noopener">ND+</a>: nova onda de bloqueios em massa derruba contas sem explicação, e a própria Meta admite que o sistema automático comete equívocos. Ou seja: até quem não fez nada errado pode cair.
+    </li>
+  </ul>
+
+  <div class="bloco-texto pos-grid">
+    <p>O resultado aparece no próprio Google: a busca por "api oficial whatsapp" cresceu mais de 125% no último ano. Não é moda. É empresa correndo pra proteger o número antes de ser a próxima.</p>
+  </div>
+
+  <p class="fecho">Migrar pra API oficial não é upgrade. É tirar o faturamento da zona de risco.</p>
+</section>
+
+<!-- BLOCO 4: API OFICIAL x NÃO OFICIAL -->
+<section id="nao-oficial">
+  <div class="section-header centered">
+    <div class="section-tag">Oficial x não oficial</div>
+    <h2 class="section-title">A API não oficial é mais barata. <em>E é exatamente esse o problema.</em></h2>
+  </div>
+
+  <div class="bloco-texto">
+    <p>Existe um mercado de "API não oficial": ferramentas que se conectam ao seu WhatsApp por trás, simulando o WhatsApp Web. São mais baratas, ativam em minutos e não pedem aprovação de ninguém.</p>
+    <p>Sendo honesto: funciona. Até o dia que não funciona mais.</p>
+    <p>A Meta não autoriza essas conexões. Quando detecta, bane o número. Sem aviso, sem recurso, sem devolver o histórico. A economia de alguns reais por mês cobra o preço de uma vez: o número que seus clientes conhecem, morto.</p>
+  </div>
+
+  <div class="tabela-wrap">
+    <table class="tabela-api">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">API não oficial</th>
+          <th scope="col" class="destaque">API oficial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Autorização da Meta</th>
+          <td data-label="API não oficial">Não existe</td>
+          <td class="destaque" data-label="API oficial">Conexão direta com a Meta</td>
+        </tr>
+        <tr>
+          <th scope="row">Risco de banimento</th>
+          <td data-label="API não oficial">Permanente</td>
+          <td class="destaque" data-label="API oficial">Zero, é o canal feito pra isso</td>
+        </tr>
+        <tr>
+          <th scope="row">Disparo em massa</th>
+          <td data-label="API não oficial">Por sua conta e risco</td>
+          <td class="destaque" data-label="API oficial">Aprovado e liberado</td>
+        </tr>
+        <tr>
+          <th scope="row">Selo de verificação</th>
+          <td data-label="API não oficial">Não</td>
+          <td class="destaque" data-label="API oficial">Sim</td>
+        </tr>
+        <tr>
+          <th scope="row">Seu número amanhã</th>
+          <td data-label="API não oficial">Incerto</td>
+          <td class="destaque" data-label="API oficial">Seu</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="fecho">Quem procura o atalho barato está procurando o banimento com desconto.</p>
+</section>
+
+<!-- BLOCO 5: QUANTO CUSTA -->
+<section id="custo">
+  <div class="section-header centered">
+    <div class="section-tag">Preço</div>
+    <h2 class="section-title">Quanto custa de verdade <em>(sem enrolação)</em></h2>
+  </div>
+
+  <div class="bloco-texto">
+    <p>A resposta que ninguém te dá na cara: <strong>a API oficial não é gratuita.</strong> Quem promete API oficial de graça está escondendo o custo em outro lugar ou não é oficial.</p>
+  </div>
+
+  <p class="bloco-intro">Como funciona a cobrança, do jeito simples:</p>
+
+  <div class="num-grid">
+    <div class="num-card">
+      <div class="num-badge">1</div>
+      <h3>Conversa iniciada pelo cliente: sem custo de mensagem.</h3>
+      <p>Quando o cliente te chama, abre uma janela de 24 horas. Dentro dela, sua equipe responde à vontade sem pagar por mensagem.</p>
+    </div>
+    <div class="num-card">
+      <div class="num-badge">2</div>
+      <h3>Conversa iniciada pela empresa: paga por mensagem de modelo.</h3>
+      <p>Pra falar primeiro com o cliente (disparo, aviso, cobrança, promoção), você usa modelos aprovados pela Meta. Desde julho de 2025 a cobrança é por mensagem enviada, e o valor muda conforme a categoria: marketing, utilidade ou autenticação.</p>
+    </div>
+    <div class="num-card">
+      <div class="num-badge">3</div>
+      <h3>O limite de pagamento da Meta.</h3>
+      <p>Conta nova começa com limite de gasto baixo. Conforme os pagamentos são processados, a Meta libera limites maiores. Quem não conhece essa regra planeja um disparo grande e descobre na hora que a conta trava no meio. Faz parte da implementação certa prever isso antes.</p>
+    </div>
+    <div class="num-card">
+      <div class="num-badge">4</div>
+      <h3>A plataforma.</h3>
+      <p>Além da Meta, existe o custo da plataforma que dá tela, funil e gestão pra API (falo dela logo abaixo).</p>
+    </div>
+  </div>
+
+  <div class="bloco-texto pos-grid">
+    <p>Agora a conta que importa: quanto custa <strong>não</strong> ter? Um número banido no meio do mês, leads sem resposta fora do horário, time inteiro dividindo um celular. Uma venda recuperada por automação paga o custo do mês. É por isso que empresa que fatura pelo WhatsApp trata a API como investimento, não como despesa.</p>
+    <p>Os valores por mensagem mudam conforme o país e os ajustes da Meta. Por isso não cravo número aqui: cravo o caminho. A tabela oficial e atualizada está na própria Meta: <a class="link-texto" href="https://developers.facebook.com/docs/whatsapp/pricing" target="_blank" rel="noopener">developers.facebook.com/docs/whatsapp/pricing</a>. Na implementação, eu calculo o custo real pro seu volume antes de você ativar.</p>
+  </div>
+</section>
+
+<!-- BLOCO 6: TER A API NÃO BASTA -->
+<section id="plataforma">
+  <div class="section-header centered">
+    <div class="section-tag">Ter a API não basta</div>
+    <h2 class="section-title">A API sozinha é <em>um cano sem torneira</em></h2>
+  </div>
+
+  <div class="bloco-texto">
+    <p>Aqui está o que quase ninguém explica: a API oficial, sozinha, não tem tela. Não tem aplicativo, não tem caixa de entrada, não tem funil. Ela é só a conexão autorizada com a Meta.</p>
+    <p>Pra sua equipe atender, você precisa ligar essa conexão a uma plataforma: o lugar onde as conversas aparecem, os leads entram no funil, o gestor enxerga a operação e a automação roda.</p>
+    <p>Empresa que contrata "só a API" descobre isso depois de pagar. Você está descobrindo antes.</p>
+  </div>
+</section>
+
+<!-- BLOCO 7: A ROTA OFICIAL E SEGURA -->
+<section id="kommo">
+  <div class="section-header centered">
+    <div class="section-tag">A rota segura</div>
+    <h2 class="section-title">O caminho certo: <em>API oficial dentro da Kommo</em></h2>
+  </div>
+
+  <div class="bloco-texto">
+    <p>A Kommo é a plataforma que uso pra ligar a API oficial na operação comercial dos meus clientes. Parceira oficial da Meta, com a conexão homologada.</p>
+  </div>
+
+  <p class="bloco-intro">O que isso significa na prática:</p>
+
+  <div class="lista-cards quatro">
+    <div class="lista-card">
+      <h3>Seu número atual migra sem morrer.</h3>
+      <p>A conexão suporta migração mantendo o número que seus clientes já conhecem.</p>
+    </div>
+    <div class="lista-card">
+      <h3>Todo o time no mesmo número.</h3>
+      <p>Cada vendedor no seu computador, o gestor vendo tudo, um número só pra empresa inteira.</p>
+    </div>
+    <div class="lista-card">
+      <h3>Cada conversa vira negócio no funil.</h3>
+      <p>Não é só chat. É CRM: lead entra, avança por etapa, nada se perde.</p>
+    </div>
+    <div class="lista-card">
+      <h3>Selo de conta verificada.</h3>
+      <p>Seu cliente sabe que está falando com a empresa de verdade.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 8: O QUE A API LIBERA -->
+<section id="libera">
+  <div class="section-header centered">
+    <div class="section-tag">O que libera</div>
+    <h2 class="section-title">O que te derrubava no WhatsApp comum, <em>aqui é permitido</em></h2>
+  </div>
+
+  <p class="bloco-intro">Essa é a recompensa de migrar. Tudo que a Meta bane em número comum, na API oficial é liberado e aprovado:</p>
+
+  <div class="lista-cards">
+    <div class="lista-card">
+      <h3>Disparo em massa que vende.</h3>
+      <p>Campanhas pra sua base inteira, com modelos aprovados. Carrossel de produtos com foto e botão de compra na própria mensagem. Sem olhar por cima do ombro esperando o bloqueio.</p>
+    </div>
+    <div class="lista-card">
+      <h3>Robô que atende na hora.</h3>
+      <p>Lead que chama às 22h recebe resposta às 22h. Menu clicável em vez de cliente digitando. Formulário e agendamento dentro do próprio WhatsApp, sem link externo.</p>
+    </div>
+    <div class="lista-card">
+      <h3>IA vendendo com você.</h3>
+      <p>Agente de inteligência artificial qualificando lead, respondendo dúvida e agendando reunião, dentro do canal autorizado pra isso.</p>
+    </div>
+  </div>
+
+  <p class="fecho">No número comum, qualquer um desses três é motivo de banimento. Na API oficial, é o uso previsto. É pra isso que ela existe.</p>
+
+  <!-- LINK FUTURO: virar ancora pra /agente-ia-whatsapp quando a pagina do
+       cluster existir. Ate la, so a mencao em texto. -->
+  <p class="nota">Como funciona um agente de IA no WhatsApp</p>
+</section>
+
+<!-- BLOCO 9: QUEM MONTA ISSO -->
+<section id="quem-sou">
+  <div class="section-header centered">
+    <div class="section-tag">Quem sou</div>
+    <h2 class="section-title">Quem instala isso <em>do jeito certo</em></h2>
+  </div>
+
+  <div class="quem-wrapper">
+    <img class="quem-foto" src="minha-foto-kommo.jpeg" loading="lazy" decoding="async"
+         alt="Marco Cordeiro, fundador da Help Estratégias Digitais, no palco de um evento da Kommo" />
+    <div class="quem-bio">
+      <p>Sou Marco Cordeiro, parceiro Gold da Kommo no Brasil. Já estruturei a operação comercial de mais de 255 empresas que vendem pelo WhatsApp, usando o Método OCV: Organização Comercial que Vende.</p>
+      <p>Ativar a API é o começo, não o fim. O que entrego é a operação funcionando: número migrado sem perda, funil desenhado, time atendendo, automação rodando e gestão enxergando tudo. A diferença entre ter a ferramenta e ter uma operação que vende.</p>
+    </div>
+  </div>
+
+  <div class="quem-sede">
+    <address>Help Estratégias Digitais · Rua Cuiabá, 5057 · Cascavel, PR</address>
+  </div>
+</section>
+
+<!-- BLOCO 10: FAQ -->
+<section id="faq">
+  <div class="section-header centered">
+    <div class="section-tag">Perguntas frequentes</div>
+    <h2 class="section-title">Perguntas frequentes <em>sobre a API oficial</em></h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item" name="faq">
+      <summary>O que é a API oficial do WhatsApp?</summary>
+      <p class="faq-answer">É a conexão criada pela Meta para empresas usarem o WhatsApp profissionalmente: vários atendentes no mesmo número, disparos aprovados e automação com IA, sem risco de banimento.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>A API oficial do WhatsApp é gratuita?</summary>
+      <p class="faq-answer">Não. Existe custo por mensagem de modelo enviada pela empresa e o custo da plataforma de atendimento. Quem promete API oficial gratuita não está falando da API oficial.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Quanto custa a API oficial do WhatsApp?</summary>
+      <p class="faq-answer">Depende do volume de mensagens que a empresa envia. Conversas iniciadas pelo cliente não geram custo de mensagem dentro da janela de 24 horas. Mensagens iniciadas pela empresa são cobradas por unidade, na faixa de centavos por mensagem, variando conforme a categoria: utilidade custa poucos centavos, marketing custa mais. Os valores atualizados estão na tabela oficial da Meta.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Qual a diferença entre WhatsApp Business e API oficial?</summary>
+      <p class="faq-answer">O WhatsApp Business é um aplicativo pra pequeno negócio com um atendente. A API oficial é uma conexão pra empresas com time e volume: vários atendentes no mesmo número, disparo aprovado e automação liberada.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Vou perder meu número ao migrar pra API oficial?</summary>
+      <p class="faq-answer">Não. A migração feita do jeito certo mantém o número atual da empresa. Esse é justamente um dos motivos de migrar: proteger o número.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>O que é a API não oficial? Vale a pena?</summary>
+      <p class="faq-answer">São ferramentas que se conectam ao WhatsApp sem autorização da Meta, simulando o WhatsApp Web. São mais baratas, mas o número pode ser banido a qualquer momento, sem recurso. Não vale o risco pra quem fatura pelo WhatsApp.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Posso fazer disparo em massa na API oficial?</summary>
+      <p class="faq-answer">Sim. É um dos usos previstos. Os envios usam modelos de mensagem aprovados pela Meta, o que elimina o risco de banimento que existe no número comum.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Posso usar chatbot e IA na API oficial?</summary>
+      <p class="faq-answer">Sim. Automação e agentes de IA são liberados na API oficial. É o único canal do WhatsApp onde isso é permitido pela Meta.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>O que é o limite de pagamento da Meta?</summary>
+      <p class="faq-answer">Contas novas começam com um limite de gasto em mensagens. Conforme os pagamentos são processados, a Meta aumenta o limite. Uma implementação bem feita planeja os disparos considerando essa regra.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Preciso de CNPJ pra ter a API oficial?</summary>
+      <p class="faq-answer">Sim. A API oficial é para empresas. A ativação passa pela verificação do negócio junto à Meta.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Quanto tempo leva pra ativar a API oficial?</summary>
+      <p class="faq-answer">De 48 horas a 14 dias, dependendo do tamanho do projeto. A ativação da conexão em si é rápida. O que define o prazo é o desenho da operação: funil, time, automações e migração do número.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>A API oficial funciona com a Kommo?</summary>
+      <p class="faq-answer">Sim. A Kommo tem a conexão homologada com a Meta, e é a plataforma que uso pra ligar a API na operação comercial dos meus clientes.</p>
+    </details>
+  </div>
+</section>
+
+<!-- BLOCO 11: CTA FINAL -->
+<section id="cta">
+  <div class="section-tag">Próximo passo</div>
+  <h2 class="section-title">Seu número é o seu faturamento. <em>Proteja os dois.</em></h2>
+  <div class="bloco-texto">
+    <p>Se sua empresa vende pelo WhatsApp, a pergunta não é se vai migrar pra API oficial. É se vai migrar antes ou depois do bloqueio.</p>
+    <p>Eu cuido do caminho inteiro: ativação da API, migração sem perder o número, funil, time e automação rodando.</p>
+  </div>
+  <a class="btn-primary" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20encontrei%20o%20seu%20site%20e%20quero%20entender%20como%20organizar%20o%20comercial%20da%20minha%20empresa%20usando%20a%20kommo." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.048 23.617a.5.5 0 0 0 .614.63l5.998-1.572A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.358-.213-3.712.974.99-3.617-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+    Falar com o Marco no WhatsApp
+  </a>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo" href="index.html">Marco Cordeiro</a>
+  <div class="footer-copy">© 2026 marcocordeiro.com.br · Todos os direitos reservados</div>
+  <div class="footer-copy">
+    <a href="/privacidade" style="color:inherit;text-decoration:underline;">Política de Privacidade</a>
+  </div>
+  <div class="footer-copy">Partner Gold Kommo</div>
+  <div class="footer-badge">
+    <a href="https://www.kommo.com/br/parceiros/encontrar-parceiro/help-estrategias-digitais/" target="_blank" rel="noopener">
+      <img src="Badge dark.png" alt="Parceiro Gold Kommo" width="120" />
+    </a>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20encontrei%20o%20seu%20site%20e%20quero%20entender%20como%20organizar%20o%20comercial%20da%20minha%20empresa%20usando%20a%20kommo." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.048 23.617a.5.5 0 0 0 .614.63l5.998-1.572A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.358-.213-3.712.974.99-3.617-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+</a>
+
+<script src="cookie-banner.js" defer></script>
+
+<!-- Dado estruturado do FAQ: ajuda o Google a mostrar as perguntas na busca
+     e as IAs a citarem as respostas. O texto tem que bater com o da tela. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é a API oficial do WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "É a conexão criada pela Meta para empresas usarem o WhatsApp profissionalmente: vários atendentes no mesmo número, disparos aprovados e automação com IA, sem risco de banimento."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A API oficial do WhatsApp é gratuita?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. Existe custo por mensagem de modelo enviada pela empresa e o custo da plataforma de atendimento. Quem promete API oficial gratuita não está falando da API oficial."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto custa a API oficial do WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende do volume de mensagens que a empresa envia. Conversas iniciadas pelo cliente não geram custo de mensagem dentro da janela de 24 horas. Mensagens iniciadas pela empresa são cobradas por unidade, na faixa de centavos por mensagem, variando conforme a categoria: utilidade custa poucos centavos, marketing custa mais. Os valores atualizados estão na tabela oficial da Meta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre WhatsApp Business e API oficial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O WhatsApp Business é um aplicativo pra pequeno negócio com um atendente. A API oficial é uma conexão pra empresas com time e volume: vários atendentes no mesmo número, disparo aprovado e automação liberada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vou perder meu número ao migrar pra API oficial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. A migração feita do jeito certo mantém o número atual da empresa. Esse é justamente um dos motivos de migrar: proteger o número."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é a API não oficial? Vale a pena?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "São ferramentas que se conectam ao WhatsApp sem autorização da Meta, simulando o WhatsApp Web. São mais baratas, mas o número pode ser banido a qualquer momento, sem recurso. Não vale o risco pra quem fatura pelo WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso fazer disparo em massa na API oficial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. É um dos usos previstos. Os envios usam modelos de mensagem aprovados pela Meta, o que elimina o risco de banimento que existe no número comum."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso usar chatbot e IA na API oficial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. Automação e agentes de IA são liberados na API oficial. É o único canal do WhatsApp onde isso é permitido pela Meta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O que é o limite de pagamento da Meta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contas novas começam com um limite de gasto em mensagens. Conforme os pagamentos são processados, a Meta aumenta o limite. Uma implementação bem feita planeja os disparos considerando essa regra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso de CNPJ pra ter a API oficial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A API oficial é para empresas. A ativação passa pela verificação do negócio junto à Meta."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto tempo leva pra ativar a API oficial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "De 48 horas a 14 dias, dependendo do tamanho do projeto. A ativação da conexão em si é rápida. O que define o prazo é o desenho da operação: funil, time, automações e migração do número."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A API oficial funciona com a Kommo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. A Kommo tem a conexão homologada com a Meta, e é a plataforma que uso pra ligar a API na operação comercial dos meus clientes."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
