@@ -75,6 +75,11 @@
       overflow-x: hidden;
     }
 
+    /* Diagramacao: titulo quebra em linhas de tamanho parecido e paragrafo
+       evita terminar com uma palavra sozinha na ultima linha. */
+    h1, h2, h3, h4, .faq-item summary { text-wrap: balance; }
+    p, li { text-wrap: pretty; }
+
     /* ── NAV ── */
     nav {
       position: fixed;
@@ -118,14 +123,18 @@
     }
 
     /* ── HERO ── */
+    /* O padding de baixo e maior que o de cima de proposito: e ele que
+       reserva a faixa do .scroll-hint, que e posicionado absoluto. Sem essa
+       folga, o botao cai por cima do "role para baixo" em tela baixa. */
     #hero {
       min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 120px 5% 80px;
+      padding: 112px 5% 108px;
       background:
         radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,58,107,0.55) 0%, transparent 70%),
         linear-gradient(160deg, var(--navy) 0%, #071020 100%);
@@ -144,11 +153,11 @@
     }
 
     #hero h1 {
-      font-size: clamp(1.9rem, 4.4vw, 3.2rem);
+      font-size: clamp(1.75rem, 3.6vw, 2.9rem);
       font-weight: 900;
-      line-height: 1.12;
-      max-width: 900px;
-      margin-bottom: 28px;
+      line-height: 1.14;
+      max-width: 880px;
+      margin-bottom: 24px;
       letter-spacing: -0.02em;
     }
 
@@ -161,12 +170,12 @@
        ganha destaque de bloco, nao de paragrafo solto. */
     .resposta-direta {
       position: relative;
-      max-width: 760px;
-      margin-bottom: 28px;
-      padding: 24px 28px;
-      font-size: clamp(0.98rem, 1.8vw, 1.1rem);
+      max-width: 740px;
+      margin-bottom: 22px;
+      padding: 22px 26px;
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.65;
       background: rgba(201,168,76,0.06);
       border: 1px solid rgba(201,168,76,0.25);
       border-radius: 14px;
@@ -175,11 +184,11 @@
 
     .hero-sub {
       position: relative;
-      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      font-size: clamp(0.92rem, 1.4vw, 1rem);
       color: var(--muted);
-      max-width: 700px;
-      margin-bottom: 44px;
-      line-height: 1.7;
+      max-width: 660px;
+      margin-bottom: 36px;
+      line-height: 1.65;
     }
 
     .btn-primary {
@@ -244,13 +253,21 @@
     }
 
     .section-title {
-      font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
       font-weight: 800;
-      line-height: 1.15;
+      line-height: 1.18;
       letter-spacing: -0.02em;
       margin-bottom: 16px;
     }
     .section-title em { font-style: normal; color: var(--gold); }
+
+    /* Sem teto de largura, titulo longo estica de ponta a ponta e vira uma
+       linha unica dificil de ler. Com teto, quebra em duas linhas parelhas. */
+    .centered .section-title {
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     .section-lead {
       font-size: 1.05rem;
@@ -262,6 +279,10 @@
     .section-header { margin-bottom: 56px; }
     .centered { text-align: center; }
     .centered .section-lead { margin: 0 auto; }
+
+    /* Quando vem uma linha de intro logo abaixo do cabecalho, os dois
+       respiros somavam 100px e abriam um buraco. Aqui o de cima encolhe. */
+    .section-header:has(+ .bloco-intro) { margin-bottom: 24px; }
 
     /* Bloco de texto corrido, centralizado, pros trechos explicativos. */
     .bloco-texto {
@@ -281,7 +302,7 @@
     /* Intro curta acima de um grid, sem virar um section-header inteiro. */
     .bloco-intro {
       max-width: 780px;
-      margin: 0 auto 44px;
+      margin: 0 auto 40px;
       text-align: center;
       font-size: 0.98rem;
       color: var(--muted);
@@ -803,7 +824,7 @@
          endereco, o que evita o vazio que sobrava com 100vh. */
       #hero {
         min-height: 100svh;
-        padding: 96px 5% 64px;
+        padding: 96px 5% 88px;
       }
       #hero h1 { margin-bottom: 20px; }
       .resposta-direta { margin-bottom: 20px; }
@@ -815,6 +836,27 @@
         flex-direction: column;
         text-align: center;
       }
+    }
+
+    /* Notebook com barra de favoritos aberta: a janela fica baixa e o hero,
+       que carrega titulo, resposta direta, subtexto e botao, nao cabe na
+       primeira dobra. Aqui ele encolhe pra entregar tudo sem rolagem. */
+    @media (min-width: 601px) and (max-height: 800px) {
+      #hero { padding: 92px 5% 76px; }
+      #hero h1 { font-size: clamp(1.5rem, 2.6vw, 2.15rem); margin-bottom: 18px; }
+      .resposta-direta {
+        max-width: 700px;
+        font-size: 0.92rem;
+        line-height: 1.55;
+        padding: 16px 20px;
+        margin-bottom: 16px;
+      }
+      .hero-sub { font-size: 0.88rem; line-height: 1.6; margin-bottom: 22px; }
+      .btn-primary { font-size: 0.92rem; padding: 13px 28px; }
+
+      /* O aviso continua na tela, so mais compacto. */
+      .scroll-hint { bottom: 16px; font-size: 0.66rem; gap: 4px; }
+      .scroll-hint::after { height: 22px; }
     }
 
     /* Telas curtas tipo iPhone SE: aperta mais o Hero pra tudo caber sem rolagem */
@@ -887,7 +929,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- BLOCO 3: O CERCO -->
 <section id="cerco">
   <div class="section-header centered">
-    <div class="section-tag">Por que agora</div>
+    <div class="section-tag">O cenário</div>
     <h2 class="section-title">O cerco fechou: por que a busca por <em>API oficial explodiu</em></h2>
   </div>
 
@@ -1059,7 +1101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- BLOCO 8: O QUE A API LIBERA -->
 <section id="libera">
   <div class="section-header centered">
-    <div class="section-tag">O que libera</div>
+    <div class="section-tag">A recompensa</div>
     <h2 class="section-title">O que te derrubava no WhatsApp comum, <em>aqui é permitido</em></h2>
   </div>
 
@@ -1090,7 +1132,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- BLOCO 9: QUEM MONTA ISSO -->
 <section id="quem-sou">
   <div class="section-header centered">
-    <div class="section-tag">Quem sou</div>
+    <div class="section-tag">Por trás disso</div>
     <h2 class="section-title">Quem instala isso <em>do jeito certo</em></h2>
   </div>
 
