@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Entenda o que é um parceiro Kommo, o que o nível Gold significa na prática e como escolher o parceiro certo para implementar o CRM na sua empresa." />
+  <title>Parceiro Kommo: o que é, níveis e como escolher | Marco Cordeiro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Dado estruturado: mesma empresa da /kommo-crm, repetido aqui pro Google
+       ligar esta pagina a Help. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Help Estratégias Digitais",
+    "description": "Parceiro Gold Kommo no Brasil. Implementação de CRM, organização comercial e automação de vendas pelo WhatsApp.",
+    "url": "https://marcocordeiro.com.br/",
+    "image": "https://marcocordeiro.com.br/minha-foto-kommo.jpeg",
+    "telephone": "+5545991193668",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Cuiabá, 5057",
+      "addressLocality": "Cascavel",
+      "addressRegion": "PR",
+      "addressCountry": "BR"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Marco Cordeiro",
+      "jobTitle": "Fundador"
+    },
+    "areaServed": "BR",
+    "sameAs": [
+      "https://www.kommo.com/br/parceiros/encontrar-parceiro/help-estrategias-digitais/"
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0A1628;
+      --navy2:  #0F2040;
+      --blue:   #1A3A6B;
+      --gold:   #C9A84C;
+      --gold2:  #E8C56A;
+      --white:  #FFFFFF;
+      --gray:   #F4F6FA;
+      --text:   #E8EDF5;
+      --muted:  #8FA3C0;
+      --radius: 12px;
+      --shadow: 0 4px 32px rgba(0,0,0,0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      /* so o selo no topo, entao fica centralizado */
+      justify-content: center;
+      align-items: center;
+      padding: 18px 5%;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .badge-nav {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50px;
+      padding: 4px 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      /* o selo tambem leva de volta pra home */
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .badge-nav:hover {
+      background: rgba(201,168,76,0.2);
+      border-color: rgba(201,168,76,0.5);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 5% 80px;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,58,107,0.55) 0%, transparent 70%),
+        linear-gradient(160deg, var(--navy) 0%, #071020 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(26,58,107,0.3) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    #hero h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      max-width: 820px;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    #hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--muted);
+      max-width: 660px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(201,168,76,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201,168,76,0.5);
+    }
+    .btn-primary svg { width: 20px; height: 20px; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px; height: 32px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 96px 5%; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-title em { font-style: normal; color: var(--gold); }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    .section-header { margin-bottom: 56px; }
+    .centered { text-align: center; }
+    .centered .section-lead { margin: 0 auto; }
+
+    /* ── O QUE É ── */
+    #oque {
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%);
+    }
+
+    /* Bloco de texto corrido, centralizado, pros trechos explicativos. */
+    .bloco-texto {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .bloco-texto p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .bloco-texto p:last-child { margin-bottom: 0; }
+
+    /* ── NÍVEIS / COMO ESCOLHER ── */
+    #niveis {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    #escolher {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Cards numerados. Tres colunas pros niveis, duas pras perguntas. */
+    .num-grid {
+      display: grid;
+      gap: 20px;
+      margin: 0 auto;
+    }
+    .num-grid.tres { grid-template-columns: repeat(3, 1fr); max-width: 1100px; }
+    .num-grid.dois { grid-template-columns: repeat(2, 1fr); max-width: 980px; }
+
+    .num-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .num-card:hover {
+      border-color: rgba(201,168,76,0.25);
+      transform: translateY(-4px);
+    }
+
+    .num-badge {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.85rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .num-card h3 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .num-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Intro curta acima de um grid, sem virar um section-header inteiro. */
+    .bloco-intro {
+      max-width: 780px;
+      margin: 0 auto 44px;
+      text-align: center;
+      font-size: 0.98rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* Caixa dourada de fecho no fim de um bloco. */
+    .fecho {
+      max-width: 780px;
+      margin: 40px auto 0;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 28px;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 14px;
+    }
+
+    /* ── CAMINHOS ── */
+    #caminhos {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .caminhos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    /* Fio dourado na lateral, igual aos cards de situacao da /kommo-crm. */
+    .caminho-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 2px solid rgba(201,168,76,0.35);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .caminho-card:hover {
+      border-color: rgba(201,168,76,0.25);
+      border-left-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .caminho-card h3 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .caminho-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .nota {
+      max-width: 900px;
+      margin: 28px auto 0;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── COMPARATIVO ── */
+    #comparativo {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Cada celula e um item do grid, entao as duas colunas alinham linha a
+       linha mesmo com textos de tamanhos diferentes. */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 16px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .compare-head {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--muted);
+      padding: 16px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .compare-cell {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* Coluna do parceiro: fundo dourado suave e moldura pra puxar o olho. */
+    .compare-head.destaque,
+    .compare-cell.destaque {
+      background: rgba(201,168,76,0.06);
+      border-left: 1px solid rgba(201,168,76,0.35);
+      border-right: 1px solid rgba(201,168,76,0.35);
+      border-bottom-color: rgba(201,168,76,0.18);
+    }
+
+    .compare-head.destaque {
+      color: var(--gold);
+      border-top: 1px solid rgba(201,168,76,0.35);
+      border-radius: 12px 12px 0 0;
+    }
+
+    .compare-cell.destaque {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .compare-grid > :last-child {
+      border-bottom: 1px solid rgba(201,168,76,0.35);
+      border-radius: 0 0 12px 12px;
+    }
+
+    /* ── QUEM SOU ── */
+    #quem-sou {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Coluna da foto um pouco mais estreita pra sobrar largura ao texto. */
+    .quem-wrapper {
+      display: grid;
+      grid-template-columns: 0.8fr 1fr;
+      gap: 56px;
+      align-items: center;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* A foto original e deitada e o Marco fica no centro, entao o corte em
+       retrato mantem ele inteiro e tira so o vazio das laterais. */
+    .quem-foto {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+      border-radius: 20px;
+      border: 1px solid rgba(201,168,76,0.25);
+    }
+
+    .quem-bio p {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+    .quem-bio p:last-child { margin-bottom: 0; }
+
+    .quem-sede {
+      display: flex;
+      justify-content: center;
+      margin-top: 48px;
+    }
+
+    .quem-sede address {
+      font-style: normal;
+      font-size: 0.85rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 50px;
+      padding: 10px 22px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* Chamada de acao no fim de um bloco, no meio da pagina. */
+    .bloco-cta {
+      text-align: center;
+      margin-top: 44px;
+    }
+
+    /* ── FAQ ── */
+    #faq {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* Acordeao nativo com details/summary: sem JS e ja acessivel pelo
+       teclado. O atributo name deixa so uma resposta aberta por vez. */
+    .faq-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      transition: border-color 0.3s;
+    }
+    .faq-item[open] { border-color: rgba(201,168,76,0.3); }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.45;
+      transition: color 0.2s;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--gold2); }
+
+    /* Seta em CSS, sem imagem nem emoji. */
+    .faq-item summary::after {
+      content: '';
+      flex-shrink: 0;
+      width: 9px; height: 9px;
+      margin-top: -4px;
+      border-right: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      transform: rotate(45deg);
+      transition: transform 0.25s, margin 0.25s;
+    }
+    .faq-item[open] summary::after {
+      transform: rotate(-135deg);
+      margin-top: 4px;
+    }
+
+    .faq-answer {
+      padding: 0 24px 22px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060E1A;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer .logo { font-size: 0.95rem; }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-badge {
+      width: 100%;
+      text-align: center;
+    }
+
+    .footer-badge img {
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .footer-badge img:hover { opacity: 1; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 200;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+    }
+    .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .num-grid.tres { grid-template-columns: repeat(2, 1fr); max-width: 720px; }
+
+      /* Foto em cima e texto embaixo, com corte menos alto pra nao ocupar
+         a tela inteira do celular. */
+      .quem-wrapper { grid-template-columns: 1fr; gap: 32px; max-width: 620px; }
+      .quem-foto { aspect-ratio: 4 / 3; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 72px 5%; }
+      .num-grid.tres,
+      .num-grid.dois { grid-template-columns: 1fr; }
+      .caminhos-grid { grid-template-columns: 1fr; }
+      .faq-item summary { padding: 18px 18px; font-size: 0.92rem; }
+      .faq-answer { padding: 0 18px 20px; }
+
+      /* No mobile a tabela vira duas listas: primeiro a coluna da esquerda
+         (celulas impares), depois a da direita (pares). */
+      .compare-grid { grid-template-columns: 1fr; row-gap: 0; }
+      .compare-grid > :nth-child(odd) { order: 1; }
+      .compare-grid > :nth-child(even) { order: 2; }
+      .compare-head.destaque { margin-top: 28px; }
+      .compare-grid > :last-child { border-radius: 0 0 12px 12px; }
+
+      /* Hero compacto no mobile: menos respiro vertical entre os elementos.
+         100svh usa a altura visivel real do navegador, sem contar a barra de
+         endereco, o que evita o vazio que sobrava com 100vh. */
+      #hero {
+        min-height: 100svh;
+        padding: 96px 5% 64px;
+      }
+      #hero h1 { margin-bottom: 16px; }
+      .hero-sub { margin-bottom: 32px; }
+      .scroll-hint { bottom: 18px; }
+      .scroll-hint::after { height: 24px; }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* Telas curtas tipo iPhone SE: aperta mais o Hero pra tudo caber sem rolagem */
+    @media (max-width: 600px) and (max-height: 700px) {
+      #hero { padding: 84px 5% 56px; }
+      #hero h1 { margin-bottom: 12px; }
+      .hero-sub { margin-bottom: 24px; }
+      .scroll-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="badge-nav" href="index.html">Partner Gold Kommo</a>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section id="hero">
+  <h1>Parceiro Kommo: o que é e <em>como escolher o certo</em></h1>
+  <p class="hero-sub">
+    A Kommo entrega a plataforma. Quem monta a operação é o parceiro. Nesta página eu explico como o programa de parceiros funciona por dentro, o que o nível Gold significa na prática e como escolher quem vai implementar o CRM na sua empresa.
+  </p>
+  <a class="btn-primary" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20cheguei%20pela%20p%C3%A1gina%20de%20parceiro%20Kommo%20e%20quero%20entender%20como%20funciona%20a%20implementa%C3%A7%C3%A3o." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.048 23.617a.5.5 0 0 0 .614.63l5.998-1.572A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.358-.213-3.712.974.99-3.617-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+    Falar com um parceiro Gold
+  </a>
+  <div class="scroll-hint">Role para baixo</div>
+</section>
+
+<!-- O QUE É UM PARCEIRO KOMMO -->
+<section id="oque">
+  <div class="section-header centered">
+    <div class="section-tag">O básico</div>
+    <h2 class="section-title">O que é um <em>parceiro Kommo?</em></h2>
+  </div>
+  <div class="bloco-texto">
+    <p>Um parceiro Kommo é uma empresa ou profissional certificado pela Kommo para vender, implementar e dar suporte à plataforma. O parceiro cuida da configuração do CRM, da conexão do WhatsApp, das automações e do treinamento do time. A licença custa o mesmo que no site oficial. A diferença está no que vem junto.</p>
+    <p>O programa é oficial e a própria Kommo mantém um diretório público de parceiros. Existem parceiros de vários níveis, e o nível diz muito sobre a experiência de quem está do outro lado.</p>
+  </div>
+</section>
+
+<!-- NÍVEIS DE PARCERIA -->
+<section id="niveis">
+  <div class="section-header centered">
+    <div class="section-tag">Níveis</div>
+    <h2 class="section-title">O que significa ser <em>parceiro Gold?</em></h2>
+  </div>
+
+  <p class="bloco-intro">A Kommo classifica os parceiros por volume de clientes ativos e resultado comprovado. Subir de nível não é pagar mais. É implementar mais e manter os clientes usando a plataforma.<br/><br/>Na prática, o nível do parceiro te diz três coisas:</p>
+
+  <div class="num-grid tres">
+    <div class="num-card">
+      <div class="num-badge">1</div>
+      <h3>Quantas operações ele já montou.</h3>
+      <p>Parceiro de entrada está aprendendo no seu projeto. Parceiro Gold já viu o seu problema dezenas de vezes em outros negócios.</p>
+    </div>
+    <div class="num-card">
+      <div class="num-badge">2</div>
+      <h3>O acesso que ele tem dentro da Kommo.</h3>
+      <p>Parceiros de nível mais alto têm canal prioritário com o suporte e com o time da plataforma.</p>
+    </div>
+    <div class="num-card">
+      <div class="num-badge">3</div>
+      <h3>Se ele sobrevive de implementação.</h3>
+      <p>Manter o nível exige clientes ativos e satisfeitos. Quem implementa mal não se sustenta no programa.</p>
+    </div>
+  </div>
+
+  <p class="fecho">Eu sou parceiro Gold com mais de 255 empresas implementadas. Cheguei ao nível em seis meses de programa.</p>
+</section>
+
+<!-- OS DOIS CAMINHOS -->
+<section id="caminhos">
+  <div class="section-header centered">
+    <div class="section-tag">Como encontrar</div>
+    <h2 class="section-title">Os dois caminhos para encontrar um <em>parceiro Kommo</em></h2>
+  </div>
+
+  <div class="caminhos-grid">
+    <div class="caminho-card">
+      <h3>Caminho 1: pedir indicação no site da Kommo.</h3>
+      <p>O formulário oficial funciona e a Kommo indica parceiros certificados. Seu pedido pode ser atendido por mais de um parceiro, e você compara as propostas.</p>
+    </div>
+    <div class="caminho-card">
+      <h3>Caminho 2: escolher o parceiro direto.</h3>
+      <p>Você pesquisa o histórico, avalia o método, conversa e decide. A conversa começa com quem você escolheu, focada no seu projeto desde a primeira mensagem.</p>
+    </div>
+  </div>
+
+  <p class="fecho">Os dois chegam ao mesmo lugar: um parceiro certificado. A diferença é quem conduz a escolha, você ou o sorteio.</p>
+
+  <p class="nota">O preço da licença é o mesmo nos dois caminhos.</p>
+</section>
+
+<!-- COMPRAR DIRETO OU COM PARCEIRO -->
+<section id="comparativo">
+  <div class="section-header centered">
+    <div class="section-tag">Direto ou com parceiro</div>
+    <h2 class="section-title">Comprar direto no site ou <em>com um parceiro?</em></h2>
+    <p class="section-lead">A Kommo não implementa. Ela entrega a ferramenta e a configuração fica por sua conta. A tabela resume a diferença.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-head">Comprando direto</div>
+    <div class="compare-head destaque">Comprando com parceiro Gold</div>
+
+    <div class="compare-cell">Sistema vazio para configurar sozinho</div>
+    <div class="compare-cell destaque">Implementação completa: funil, WhatsApp, automação e time treinado</div>
+
+    <div class="compare-cell">Suporte da Kommo na fila comum</div>
+    <div class="compare-cell destaque">Dois suportes: o do parceiro, direto, e o da Kommo, prioritário</div>
+
+    <div class="compare-cell">Sem bônus</div>
+    <div class="compare-cell destaque">Um mês grátis na assinatura</div>
+
+    <div class="compare-cell">Aprende no tentativa e erro</div>
+    <div class="compare-cell destaque">Método aplicado do processo à IA</div>
+
+    <div class="compare-cell">Sozinho depois da compra</div>
+    <div class="compare-cell destaque">Acompanhamento de quem já implementou 255 vezes</div>
+  </div>
+
+  <p class="nota">O mês grátis e o suporte prioritário seguem as regras do programa de parceiros Kommo. O mês grátis vale a partir de 3 usuários no plano Base e 2 usuários nos planos Advanced e Pro.</p>
+</section>
+
+<!-- COMO ESCOLHER -->
+<section id="escolher">
+  <div class="section-header centered">
+    <div class="section-tag">Critérios</div>
+    <h2 class="section-title">Como escolher um <em>parceiro Kommo</em></h2>
+  </div>
+
+  <p class="bloco-intro">Quatro perguntas separam um implementador de verdade de um revendedor de licença:</p>
+
+  <div class="num-grid dois">
+    <div class="num-card">
+      <div class="num-badge">1</div>
+      <h3>Quantas implementações ele comprova?</h3>
+      <p>Peça números e segmentos. Quem implementou de verdade fala de casos, não de funcionalidades.</p>
+    </div>
+    <div class="num-card">
+      <div class="num-badge">2</div>
+      <h3>Ele tem método ou improvisa?</h3>
+      <p>Implementação sem método é configuração de tela. Pergunte qual é o processo, etapa por etapa, do diagnóstico ao treinamento do time.</p>
+    </div>
+    <div class="num-card">
+      <div class="num-badge">3</div>
+      <h3>O suporte é dele ou é só o da Kommo?</h3>
+      <p>Depois da implementação, quem te responde? Se a resposta for "abre chamado na plataforma", você está comprando a licença com outro nome.</p>
+    </div>
+    <div class="num-card">
+      <div class="num-badge">4</div>
+      <h3>Ele entende do seu tipo de venda?</h3>
+      <p>Quem vende por WhatsApp tem dinâmica própria. O parceiro precisa conhecer essa realidade, não só a ferramenta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM SOU + CTA -->
+<section id="quem-sou">
+  <div class="section-header centered">
+    <div class="section-tag">Quem sou</div>
+    <h2 class="section-title">Quem está por trás <em>desta página</em></h2>
+  </div>
+
+  <div class="quem-wrapper">
+    <img class="quem-foto" src="minha-foto-kommo.jpeg" loading="lazy" decoding="async"
+         alt="Marco Cordeiro, fundador da Help Estratégias Digitais, no palco de um evento da Kommo" />
+    <div class="quem-bio">
+      <p>Sou Marco Cordeiro, fundador da Help Estratégias Digitais, parceiro Gold da Kommo no Brasil. São mais de 14 anos de experiência comercial e mais de 255 empresas implementadas com o Método OCV: Organização Comercial que Vende.</p>
+      <p>Eu não vendo licença. Vendo a operação comercial montada e funcionando: processo, time, Kommo, automação e IA.</p>
+    </div>
+  </div>
+
+  <div class="bloco-cta">
+    <a class="btn-primary" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20cheguei%20pela%20p%C3%A1gina%20de%20parceiro%20Kommo%20e%20quero%20entender%20como%20funciona%20a%20implementa%C3%A7%C3%A3o." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.048 23.617a.5.5 0 0 0 .614.63l5.998-1.572A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.358-.213-3.712.974.99-3.617-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+      Quero implementar com um parceiro Gold
+    </a>
+  </div>
+
+  <div class="quem-sede">
+    <address>Help Estratégias Digitais · Rua Cuiabá, 5057 · Cascavel, PR</address>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header centered">
+    <div class="section-tag">Perguntas frequentes</div>
+    <h2 class="section-title">Perguntas frequentes <em>sobre parceiros Kommo</em></h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item" name="faq">
+      <summary>O que é um parceiro Kommo?</summary>
+      <p class="faq-answer">É uma empresa certificada pela Kommo para vender, implementar e dar suporte à plataforma. O parceiro configura o CRM, conecta o WhatsApp, monta as automações e treina o time. A licença custa o mesmo que no site oficial.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Contratar com parceiro sai mais caro?</summary>
+      <p class="faq-answer">Não. O valor da licença é o mesmo do site da Kommo. Com parceiro Gold você ainda ganha um mês grátis na assinatura, seguindo as regras do programa de parceiros.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Qual a diferença entre os níveis de parceiro?</summary>
+      <p class="faq-answer">O nível reflete o volume de clientes ativos e o resultado comprovado do parceiro. Um parceiro Gold mantém dezenas de operações rodando na plataforma. O nível também dá acesso prioritário ao suporte da Kommo.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Posso trocar de parceiro depois?</summary>
+      <p class="faq-answer">Pode. A conta é sua, não do parceiro. Mas trocar no meio do caminho custa tempo e retrabalho. Por isso vale escolher bem antes, e não aceitar o primeiro que te ligar.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Como sei se um parceiro é oficial?</summary>
+      <p class="faq-answer">A Kommo mantém um diretório público de parceiros no site oficial. Todo parceiro de verdade aparece lá, com nível e informações de contato.</p>
+    </details>
+    <details class="faq-item" name="faq">
+      <summary>Quero virar parceiro Kommo. Você ajuda?</summary>
+      <p class="faq-answer">O caminho oficial é o programa de parceiros no site da Kommo, que é gratuito. Se você já é parceiro e quer trocar experiência sobre implementação, me chama no WhatsApp.</p>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo" href="index.html">Marco Cordeiro</a>
+  <div class="footer-copy">© 2026 marcocordeiro.com.br · Todos os direitos reservados</div>
+  <div class="footer-copy">
+    <a href="/privacidade" style="color:inherit;text-decoration:underline;">Política de Privacidade</a>
+  </div>
+  <div class="footer-copy">Partner Gold Kommo</div>
+  <div class="footer-badge">
+    <a href="https://www.kommo.com/br/parceiros/encontrar-parceiro/help-estrategias-digitais/" target="_blank" rel="noopener">
+      <img src="Badge dark.png" alt="Parceiro Gold Kommo" width="120" />
+    </a>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/5545991193668?text=Ol%C3%A1%2C%20cheguei%20pela%20p%C3%A1gina%20de%20parceiro%20Kommo%20e%20quero%20entender%20como%20funciona%20a%20implementa%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.048 23.617a.5.5 0 0 0 .614.63l5.998-1.572A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.358-.213-3.712.974.99-3.617-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+</a>
+
+<script src="cookie-banner.js" defer></script>
+
+<!-- Dado estruturado do FAQ: ajuda o Google a mostrar as perguntas na busca
+     e as IAs a citarem as respostas. O texto tem que bater com o da tela. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é um parceiro Kommo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "É uma empresa certificada pela Kommo para vender, implementar e dar suporte à plataforma. O parceiro configura o CRM, conecta o WhatsApp, monta as automações e treina o time. A licença custa o mesmo que no site oficial."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Contratar com parceiro sai mais caro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não. O valor da licença é o mesmo do site da Kommo. Com parceiro Gold você ainda ganha um mês grátis na assinatura, seguindo as regras do programa de parceiros."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre os níveis de parceiro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O nível reflete o volume de clientes ativos e o resultado comprovado do parceiro. Um parceiro Gold mantém dezenas de operações rodando na plataforma. O nível também dá acesso prioritário ao suporte da Kommo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Posso trocar de parceiro depois?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pode. A conta é sua, não do parceiro. Mas trocar no meio do caminho custa tempo e retrabalho. Por isso vale escolher bem antes, e não aceitar o primeiro que te ligar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Como sei se um parceiro é oficial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Kommo mantém um diretório público de parceiros no site oficial. Todo parceiro de verdade aparece lá, com nível e informações de contato."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quero virar parceiro Kommo. Você ajuda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O caminho oficial é o programa de parceiros no site da Kommo, que é gratuito. Se você já é parceiro e quer trocar experiência sobre implementação, me chama no WhatsApp."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
