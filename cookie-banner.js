@@ -182,7 +182,7 @@
     var text = document.createElement('div');
     text.className = 'cb-text';
     text.innerHTML =
-      'Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa ' +
+      'Usamos cookies de medição (Google Analytics e Meta Pixel) só se você aceitar. Saiba mais na ' +
       '<a href="' + PRIVACY_URL + '">Política de Privacidade</a>.';
 
     var actions = document.createElement('div');
