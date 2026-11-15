@@ -5,6 +5,8 @@
   var TIMESTAMP_KEY = 'cookie_consent_timestamp';
   var EXPIRY_DAYS = 365;
   var PRIVACY_URL = '/privacidade';
+  var GTM_ID = 'GTM-K7LNFJB6';
+  var gtmCarregado = false;
 
   function hasValidConsent() {
     try {
@@ -19,6 +21,26 @@
     } catch (e) {
       return false;
     }
+  }
+
+  function getConsent() {
+    try {
+      return localStorage.getItem(STORAGE_KEY);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // Carrega o Google Tag Manager (Analytics e Meta Pixel) só depois do aceite
+  function loadGTM() {
+    if (gtmCarregado) return;
+    gtmCarregado = true;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+    document.head.appendChild(script);
   }
 
   function saveConsent(value) {
@@ -83,8 +105,10 @@
       "#cookie-banner .cb-text a:hover {",
       "  color: #E8C56A;",
       "}",
+      // Os 2 botões têm o mesmo tamanho: cada coluna fica com a largura do maior
       "#cookie-banner .cb-actions {",
-      "  display: flex;",
+      "  display: grid;",
+      "  grid-template-columns: repeat(2, minmax(0, 1fr));",
       "  gap: 12px;",
       "  flex-shrink: 0;",
       "}",
@@ -98,27 +122,17 @@
       "  white-space: nowrap;",
       "  letter-spacing: 0.01em;",
       "  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;",
-      "}",
-      "#cookie-banner .cb-btn:focus-visible {",
-      "  outline: 2px solid #C9A84C;",
-      "  outline-offset: 2px;",
-      "}",
-      "#cookie-banner .cb-btn-secondary {",
-      "  background: transparent;",
-      "  border: 1px solid rgba(255, 255, 255, 0.5);",
-      "  color: #FFFFFF;",
-      "}",
-      "#cookie-banner .cb-btn-secondary:hover {",
-      "  background: rgba(255, 255, 255, 0.08);",
-      "  border-color: #FFFFFF;",
-      "}",
-      "#cookie-banner .cb-btn-primary {",
+      // Mesmo estilo nos 2 botões: aceitar e recusar com o mesmo destaque
       "  background: #C9A84C;",
       "  border: 1px solid #C9A84C;",
       "  color: #0A1628;",
       "  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.25);",
       "}",
-      "#cookie-banner .cb-btn-primary:hover {",
+      "#cookie-banner .cb-btn:focus-visible {",
+      "  outline: 2px solid #C9A84C;",
+      "  outline-offset: 2px;",
+      "}",
+      "#cookie-banner .cb-btn:hover {",
       "  background: #E8C56A;",
       "  border-color: #E8C56A;",
       "  transform: translateY(-1px);",
@@ -134,14 +148,22 @@
       "    width: calc(100% - 24px);",
       "    border-radius: 12px;",
       "  }",
+      "  #cookie-banner .cb-text {",
+      "    font-size: 13px;",
+      "  }",
       "  #cookie-banner .cb-actions {",
-      "    flex-direction: column-reverse;",
       "    width: 100%;",
+      "    gap: 8px;",
       "  }",
       "  #cookie-banner .cb-btn {",
-      "    width: 100%;",
-      "    padding: 12px 20px;",
+      "    white-space: normal;",
+      "    font-size: 13px;",
+      "    padding: 11px 8px;",
       "  }",
+      "}",
+      // Enquanto o aviso está aberto, o fim da página e o botão do WhatsApp ficam acima dele
+      "body.cb-aberto .wa-float {",
+      "  bottom: calc(var(--cb-altura, 0px) + 24px);",
       "}",
       "@media (prefers-reduced-motion: reduce) {",
       "  #cookie-banner { transition: opacity 0.01ms ease; }",
@@ -160,7 +182,7 @@
     var text = document.createElement('div');
     text.className = 'cb-text';
     text.innerHTML =
-      'Utilizamos cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa ' +
+      'Usamos cookies de medição (Google Analytics e Meta Pixel) só se você aceitar. Saiba mais na ' +
       '<a href="' + PRIVACY_URL + '">Política de Privacidade</a>.';
 
     var actions = document.createElement('div');
@@ -168,13 +190,13 @@
 
     var btnEssential = document.createElement('button');
     btnEssential.type = 'button';
-    btnEssential.className = 'cb-btn cb-btn-secondary';
+    btnEssential.className = 'cb-btn';
     btnEssential.textContent = 'Apenas essenciais';
     btnEssential.setAttribute('data-consent', 'essential');
 
     var btnAll = document.createElement('button');
     btnAll.type = 'button';
-    btnAll.className = 'cb-btn cb-btn-primary';
+    btnAll.className = 'cb-btn';
     btnAll.textContent = 'Aceitar todos';
     btnAll.setAttribute('data-consent', 'all');
 
@@ -186,7 +208,10 @@
 
     function handleClick(consent) {
       saveConsent(consent);
+      if (consent === 'all') loadGTM();
       hideBanner(banner);
+      // Quem tinha aceitado e mudou para essenciais: recarrega para parar a medição
+      if (consent === 'essential' && gtmCarregado) setTimeout(function () { location.reload(); }, 600);
     }
 
     btnEssential.addEventListener('click', function () { handleClick('essential'); });
@@ -195,8 +220,29 @@
     return banner;
   }
 
+  // Reserva espaço no fim da página do tamanho do aviso
+  function reserveSpace(banner) {
+    var altura = banner.offsetHeight + 24;
+    document.documentElement.style.setProperty('--cb-altura', altura + 'px');
+    document.body.style.paddingBottom = altura + 'px';
+  }
+
+  function releaseSpace() {
+    document.body.classList.remove('cb-aberto');
+    document.body.style.paddingBottom = '';
+    window.removeEventListener('resize', onResize);
+  }
+
+  function onResize() {
+    var banner = document.getElementById('cookie-banner');
+    if (banner) reserveSpace(banner);
+  }
+
   function showBanner(banner) {
     document.body.appendChild(banner);
+    document.body.classList.add('cb-aberto');
+    reserveSpace(banner);
+    window.addEventListener('resize', onResize);
     // Dois rAFs garantem que o estado inicial seja pintado antes da transição
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
@@ -206,6 +252,7 @@
   }
 
   function hideBanner(banner) {
+    releaseSpace();
     banner.classList.remove('cb-visible');
     banner.classList.add('cb-hiding');
 
@@ -221,12 +268,31 @@
     setTimeout(remove, 600);
   }
 
-  function init() {
-    if (hasValidConsent()) return;
+  function openBanner() {
     if (document.getElementById('cookie-banner')) return;
     injectStyles();
     var banner = buildBanner();
     showBanner(banner);
+  }
+
+  // Links com data-cookie-preferencias reabrem o aviso para mudar a escolha
+  function bindPreferenceLinks() {
+    var links = document.querySelectorAll('[data-cookie-preferencias]');
+    for (var i = 0; i < links.length; i++) {
+      links[i].addEventListener('click', function (e) {
+        e.preventDefault();
+        openBanner();
+      });
+    }
+  }
+
+  function init() {
+    bindPreferenceLinks();
+    if (hasValidConsent()) {
+      if (getConsent() === 'all') loadGTM();
+      return;
+    }
+    openBanner();
   }
 
   if (document.readyState === 'loading') {
