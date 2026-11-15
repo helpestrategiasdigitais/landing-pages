@@ -1,1 +1,4 @@
 .maestri/
+node_modules/
+dist/
+.astro/
