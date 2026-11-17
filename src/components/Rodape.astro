@@ -1,0 +1,42 @@
+---
+// Rodapé único do site. A lista de links mora aqui, num lugar só.
+// Página nova entra nesta lista e passa a aparecer em todos os rodapés.
+// Cada página mostra todos os links, menos o que leva para ela mesma.
+interface Props {
+  // Caminho da página que está usando o rodapé, por exemplo "/kommo-crm"
+  atual?: string;
+  // Na home o logo fica sem link
+  home?: boolean;
+  // Provisório do commit 1: mostra só estes links (a privacidade mantém o rodapé de hoje)
+  apenas?: string[];
+}
+
+const { atual = '', home = false, apenas } = Astro.props;
+
+const links = [
+  { href: '/kommo-crm', texto: 'Kommo CRM' },
+  { href: '/parceiro-kommo', texto: 'Parceiro Kommo' },
+  { href: '/api-oficial-whatsapp', texto: 'API oficial do WhatsApp' },
+  { href: '/rotina-comercial', texto: 'Rotina Comercial' },
+  { href: '/privacidade', texto: 'Política de Privacidade' },
+];
+
+const visiveis = links.filter((link) => (apenas ? apenas.includes(link.href) : link.href !== atual));
+---
+<footer>
+  {home ? <div class="logo">Marco Cordeiro</div> : <a class="logo" href="/">Marco Cordeiro</a>}
+  <div class="footer-copy">© 2026 marcocordeiro.com.br · Todos os direitos reservados</div>
+  <div class="footer-copy footer-links">
+    {visiveis.map((link, i) => (
+      <>
+        <a href={link.href} style="color:inherit;text-decoration:underline;">{link.texto}</a>{i < visiveis.length - 1 ? ' · ' : ''}
+      </>
+    ))}
+  </div>
+  <div class="footer-copy">Partner Gold Kommo</div>
+  <div class="footer-badge">
+    <a href="https://www.kommo.com/br/parceiros/encontrar-parceiro/help-estrategias-digitais/" target="_blank" rel="noopener">
+      <img src="Badge dark.png" alt="Parceiro Gold Kommo" width="120" />
+    </a>
+  </div>
+</footer>
