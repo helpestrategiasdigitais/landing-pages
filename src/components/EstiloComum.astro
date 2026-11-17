@@ -1,0 +1,59 @@
+---
+// Estilo do rodapé e do botão do WhatsApp, igual nas páginas que usam os componentes.
+// Sai como <style is:inline> no <head>, logo depois do <style> da página.
+// A regra do rodapé dentro do @media do celular fica em cada página, porque
+// a largura não é a mesma em todas (768px na home e na privacidade, 600px nas outras).
+---
+<style is:inline>
+    /* ── FOOTER ── */
+    footer {
+      background: #060E1A;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer .logo { font-size: 0.95rem; }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* Cada link do rodapé fica inteiro numa linha, sem quebrar no meio no celular */
+    .footer-links a { white-space: nowrap; }
+
+    .footer-badge {
+      width: 100%;
+      text-align: center;
+    }
+
+    .footer-badge img {
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .footer-badge img:hover { opacity: 1; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 200;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+    }
+    .wa-float svg { width: 28px; height: 28px; fill: white; }
+</style>

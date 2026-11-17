@@ -1,3 +1,7 @@
+---
+import Rodape from '../components/Rodape.astro';
+import EstiloComum from '../components/EstiloComum.astro';
+---
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -345,36 +349,6 @@
     }
     .empresa-info strong { color: var(--white); font-weight: 600; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #060E1A;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 32px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    footer .logo { font-size: 0.95rem; }
-
-    .footer-copy {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .footer-badge {
-      width: 100%;
-      text-align: center;
-    }
-
-    .footer-badge img {
-      opacity: 0.85;
-      transition: opacity 0.2s;
-    }
-    .footer-badge img:hover { opacity: 1; }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       #hero { padding: 130px 5% 48px; }
@@ -386,12 +360,13 @@
       }
     }
   </style>
+  <EstiloComum />
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="logo" href="index.html">Marco Cordeiro</a>
+  <a class="logo" href="/">Marco Cordeiro</a>
   <span class="badge-nav">Partner Gold Kommo</span>
 </nav>
 
@@ -566,19 +541,7 @@
 </main>
 
 <!-- FOOTER -->
-<footer>
-  <a class="logo" href="index.html">Marco Cordeiro</a>
-  <div class="footer-copy">© 2026 marcocordeiro.com.br · Todos os direitos reservados</div>
-  <div class="footer-copy">
-    <a href="/privacidade" style="color:inherit;text-decoration:underline;">Política de Privacidade</a>
-  </div>
-  <div class="footer-copy">Partner Gold Kommo</div>
-  <div class="footer-badge">
-    <a href="https://www.kommo.com/br/parceiros/encontrar-parceiro/help-estrategias-digitais/" target="_blank" rel="noopener">
-      <img src="Badge dark.png" alt="Parceiro Gold Kommo" width="120" />
-    </a>
-  </div>
-</footer>
+<Rodape atual="/privacidade" />
 
 <script src="cookie-banner.js" defer></script>
 
