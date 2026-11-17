@@ -7,21 +7,20 @@ interface Props {
   atual?: string;
   // Na home o logo fica sem link
   home?: boolean;
-  // Provisório do commit 1: mostra só estes links (a privacidade mantém o rodapé de hoje)
-  apenas?: string[];
 }
 
-const { atual = '', home = false, apenas } = Astro.props;
+const { atual = '', home = false } = Astro.props;
 
 const links = [
   { href: '/kommo-crm', texto: 'Kommo CRM' },
   { href: '/parceiro-kommo', texto: 'Parceiro Kommo' },
   { href: '/api-oficial-whatsapp', texto: 'API oficial do WhatsApp' },
   { href: '/rotina-comercial', texto: 'Rotina Comercial' },
+  { href: '/sobre', texto: 'Sobre o Marco' },
   { href: '/privacidade', texto: 'Política de Privacidade' },
 ];
 
-const visiveis = links.filter((link) => (apenas ? apenas.includes(link.href) : link.href !== atual));
+const visiveis = links.filter((link) => link.href !== atual);
 ---
 <footer>
   {home ? <div class="logo">Marco Cordeiro</div> : <a class="logo" href="/">Marco Cordeiro</a>}
