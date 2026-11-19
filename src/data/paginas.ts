@@ -18,6 +18,6 @@ export const paginas: PaginaSitemap[] = [
   { caminho: '/api-oficial-whatsapp', data: '2026-11-15', prioridade: '0.8' },
   { caminho: '/kommo-crm', data: '2026-11-15', prioridade: '0.9' },
   { caminho: '/parceiro-kommo', data: '2026-11-15', prioridade: '0.8' },
-  { caminho: '/rotina-comercial', data: '2026-11-14', prioridade: '0.8' },
+  { caminho: '/rotina-comercial', data: '2026-11-19', prioridade: '0.8' },
   { caminho: '/sobre', data: '2026-11-15', prioridade: '0.6' },
 ];
