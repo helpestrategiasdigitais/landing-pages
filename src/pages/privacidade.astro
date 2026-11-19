@@ -1,4 +1,5 @@
 ---
+import Topo from '../components/Topo.astro';
 import Rodape from '../components/Rodape.astro';
 import EstiloComum from '../components/EstiloComum.astro';
 ---
@@ -53,7 +54,7 @@ import EstiloComum from '../components/EstiloComum.astro';
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 18px 5%;
       background: rgba(10, 22, 40, 0.92);
@@ -80,6 +81,15 @@ import EstiloComum from '../components/EstiloComum.astro';
       padding: 4px 12px;
       letter-spacing: 0.05em;
       text-transform: uppercase;
+      /* o selo tambem leva de volta pra home */
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .badge-nav:hover {
+      background: rgba(201,168,76,0.2);
+      border-color: rgba(201,168,76,0.5);
+      color: var(--gold);
+      text-decoration: none;
     }
 
     /* ── HERO ── */
@@ -365,10 +375,7 @@ import EstiloComum from '../components/EstiloComum.astro';
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="logo" href="/">Marco Cordeiro</a>
-  <span class="badge-nav">Partner Gold Kommo</span>
-</nav>
+<Topo />
 
 <!-- HERO -->
 <section id="hero">
