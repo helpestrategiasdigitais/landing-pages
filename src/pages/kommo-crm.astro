@@ -618,6 +618,14 @@ import EstiloComum from '../components/EstiloComum.astro';
       border: 1px solid rgba(201,168,76,0.25);
       border-radius: 14px;
     }
+    /* Link dentro do fecho, na cor dourada do site. */
+    .ocv-fecho a {
+      color: var(--gold2);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.2s;
+    }
+    .ocv-fecho a:hover { color: var(--gold); }
 
     /* Visao OCV: bloco em duas colunas com barra dourada na lateral. */
     .visao-wrapper {
@@ -1655,6 +1663,7 @@ import EstiloComum from '../components/EstiloComum.astro';
     </div>
   </div>
   <p class="ocv-fecho">Se nenhuma dessas é o seu caso, então a Kommo provavelmente é exatamente o que o seu comercial precisa. E aí eu posso ajudar.</p>
+  <p class="ocv-fecho">Ainda escolhendo a ferramenta? Veja o guia <a href="/crm-para-whatsapp">CRM para WhatsApp: como escolher</a>.</p>
 </section>
 
 <!-- FAQ -->
