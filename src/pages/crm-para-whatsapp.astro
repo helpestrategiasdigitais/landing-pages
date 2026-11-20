@@ -1,0 +1,540 @@
+---
+import Topo from '../components/Topo.astro';
+import Rodape from '../components/Rodape.astro';
+import WhatsApp from '../components/WhatsApp.astro';
+import EstiloComum from '../components/EstiloComum.astro';
+
+// Mensagem do botão final. O botão flutuante usa a mesma, pelo componente WhatsApp.
+const mensagem = 'Olá Marco, vim pela página de CRM para WhatsApp e quero organizar minhas vendas.';
+const linkWhatsApp = `https://wa.me/5545991193668?text=${encodeURIComponent(mensagem)}`;
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Os 3 erros de quem vende pelo WhatsApp sem CRM, como escolher a ferramenta certa e quanto tempo leva para o time usar. Por Marco Cordeiro." />
+  <title>CRM para WhatsApp: como escolher e organizar suas vendas</title>
+  <link rel="canonical" href="https://marcocordeiro.com.br/crm-para-whatsapp" />
+  <link rel="icon" type="image/png" href="/icone.png" />
+  <link rel="apple-touch-icon" href="/icone.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Dado estruturado: artigo com autor e datas. Ao mudar o texto da página, atualize dateModified. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "CRM para WhatsApp: como escolher e organizar suas vendas",
+    "description": "Os 3 erros de quem vende pelo WhatsApp sem CRM, como escolher a ferramenta certa e quanto tempo leva para o time usar. Por Marco Cordeiro.",
+    "author": {
+      "@type": "Person",
+      "name": "Marco Cordeiro",
+      "url": "https://marcocordeiro.com.br/sobre"
+    },
+    "datePublished": "2026-11-20",
+    "dateModified": "2026-11-20",
+    "mainEntityOfPage": "https://marcocordeiro.com.br/crm-para-whatsapp"
+  }
+  </script>
+  <style is:inline>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0A1628;
+      --navy2:  #0F2040;
+      --blue:   #1A3A6B;
+      --gold:   #C9A84C;
+      --gold2:  #E8C56A;
+      --white:  #FFFFFF;
+      --gray:   #F4F6FA;
+      --text:   #E8EDF5;
+      --muted:  #8FA3C0;
+      --radius: 12px;
+      --shadow: 0 4px 32px rgba(0,0,0,0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px 5%;
+      background: rgba(10, 22, 40, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .badge-nav {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50px;
+      padding: 4px 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .badge-nav:hover {
+      background: rgba(201,168,76,0.2);
+      border-color: rgba(201,168,76,0.5);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 140px 5% 88px;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,58,107,0.55) 0%, transparent 70%),
+        linear-gradient(160deg, var(--navy) 0%, #071020 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(26,58,107,0.3) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    #hero > * { position: relative; }
+
+    #hero h1 {
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      max-width: 820px;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+      overflow-wrap: break-word;
+    }
+
+    .publicado {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .resposta-direta {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--text);
+      max-width: 720px;
+      line-height: 1.75;
+      padding: 24px 28px;
+      text-align: left;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 14px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(201,168,76,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201,168,76,0.5);
+    }
+    .btn-primary svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 96px 5%; }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      overflow-wrap: break-word;
+    }
+
+    .section-header { margin-bottom: 40px; }
+    .centered { text-align: center; }
+
+    .alt {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Texto corrido em coluna estreita, centralizada na página. */
+    .bloco-texto {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .bloco-texto p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .bloco-texto p:last-child { margin-bottom: 0; }
+
+    /* Link dentro de texto corrido. */
+    .link-texto {
+      color: var(--gold2);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      overflow-wrap: break-word;
+      transition: color 0.2s;
+    }
+    .link-texto:hover { color: var(--gold); }
+
+    /* ── OS 3 ERROS ── */
+    .erros-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .erro-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 2px solid rgba(201,168,76,0.35);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .erro-card:hover {
+      border-color: rgba(201,168,76,0.25);
+      border-left-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .erro-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--white);
+      line-height: 1.35;
+    }
+
+    .erro-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── LISTAS ── */
+    .lista-check {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: none;
+      margin: 0 0 20px;
+    }
+
+    .lista-check li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .lista-check li::before {
+      content: '✓';
+      flex-shrink: 0;
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 0.85rem;
+      line-height: 1.9;
+    }
+
+    .frases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .frase-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 2px solid rgba(201,168,76,0.35);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .ocv-fecho {
+      max-width: 720px;
+      margin: 40px auto 0;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.6;
+      padding: 24px 28px;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 14px;
+    }
+
+    /* ── CTA FINAL ── */
+    #cta {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(26,58,107,0.6) 0%, transparent 70%),
+        var(--navy);
+      text-align: center;
+      padding: 112px 5%;
+    }
+
+    #cta .section-title { max-width: 700px; margin: 0 auto 16px; }
+
+    .cta-texto {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+      margin: 0 auto 40px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .erros-grid { grid-template-columns: 1fr; max-width: 620px; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 72px 5%; }
+      #hero { padding: 112px 5% 64px; }
+      .resposta-direta { padding: 20px 18px; }
+      .frases-grid { grid-template-columns: 1fr; }
+      .btn-primary { padding: 16px 24px; }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+  <EstiloComum />
+</head>
+<body>
+
+<!-- NAV -->
+<Topo />
+
+<!-- HERO -->
+<section id="hero">
+  <h1>CRM para WhatsApp: como escolher e organizar suas vendas</h1>
+  <p class="publicado">Publicado em 20 de novembro de 2026 por <a class="link-texto" href="/sobre">Marco Cordeiro</a></p>
+  <p class="resposta-direta">CRM para WhatsApp é um sistema que organiza as conversas de venda do WhatsApp. Cada contato vira um cliente com histórico: de onde veio, o que quer, para quando e quanto vale. E você passa a ver em números quanto prospecta, quantos respondem, quantos orçamentos passou e quanto vende.</p>
+</section>
+
+<!-- 1. QUEM CHEGA ATÉ MIM -->
+<section id="quem-chega" class="alt">
+  <div class="section-header centered">
+    <div class="section-tag">Quem chega até mim</div>
+    <h2 class="section-title">Duas empresas, o mesmo problema</h2>
+  </div>
+  <div class="bloco-texto">
+    <p>Quando uma empresa chega até mim, ela está em um de dois caminhos.</p>
+    <p>No primeiro, ela está perdendo dinheiro e quer enxergar o que está acontecendo dentro da operação.</p>
+    <p>No segundo, ela está vendendo bem e precisa organizar para continuar crescendo.</p>
+    <p>E nos dois caminhos aparece um terceiro tipo: quem já tentou, se frustrou e está trocando de ferramenta mais uma vez.</p>
+  </div>
+</section>
+
+<!-- 2. OS ERROS -->
+<section id="erros">
+  <div class="section-header centered">
+    <div class="section-tag">Os erros</div>
+    <h2 class="section-title">Os 3 erros de quem vende pelo WhatsApp sem CRM</h2>
+  </div>
+  <div class="erros-grid">
+    <div class="erro-card">
+      <h3>Conversa sem resposta.</h3>
+      <p>No WhatsApp, as conversas vão descendo e você responde as novas. Isso vai acumulando. Quando você vê, tem gente há 15, 20, 30 dias sem receber uma resposta sua.</p>
+    </div>
+    <div class="erro-card">
+      <h3>Cliente sem informação.</h3>
+      <p>Você não sabe de onde a pessoa veio, o que ela quer, para quando ela quer e qual é o potencial dessa venda. Sem isso, fica difícil saber o que ela precisa.</p>
+    </div>
+    <div class="erro-card">
+      <h3>Venda sem número.</h3>
+      <p>Quanto você prospecta? Quantos responderam? Quantos orçamentos foram passados? Quantos por cento você vende? Sem CRM, essas respostas não existem.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. NA PRÁTICA -->
+<section id="na-pratica" class="alt">
+  <div class="section-header centered">
+    <div class="section-tag">Na prática</div>
+    <h2 class="section-title">O que muda depois do CRM</h2>
+  </div>
+  <div class="bloco-texto">
+    <p>Quando você coloca um CRM, você passa a enxergar. Já nos primeiros dias dá para ver o que está entrando, por que está entrando e para onde está indo.</p>
+    <p>Com o tempo, vem a previsibilidade. Um exemplo de conta:</p>
+    <ul class="lista-check">
+      <li>10 clientes novos por dia são 300 no mês.</li>
+      <li>Com 10% de fechamento, são 30 vendas.</li>
+      <li>Com ticket médio de R$ 3.000, são R$ 90.000.</li>
+    </ul>
+    <p>Com esses números na mão, a decisão deixa de ser no escuro. É isso que eu chamo de organização comercial.</p>
+  </div>
+</section>
+
+<!-- 4. COMO ESCOLHER -->
+<section id="como-escolher">
+  <div class="section-header centered">
+    <div class="section-tag">Como escolher</div>
+    <h2 class="section-title">A pergunta que vem antes da ferramenta</h2>
+  </div>
+  <div class="bloco-texto">
+    <p>Escolher um CRM é entender como você trabalha. A sua empresa já tem um método, um jeito de atender e uma cultura.</p>
+    <p>Se a plataforma não se adapta ao seu modelo de negócio, isso vira problema. Por isso a pergunta certa é: este CRM se adapta à minha operação?</p>
+    <p>Quanto menos você tiver que mudar o seu jeito de trabalhar para caber na ferramenta, menos frustração você vai ter.</p>
+    <p>Se a sua empresa atende pelo WhatsApp com vários vendedores, entenda também a diferença entre a <a class="link-texto" href="/api-oficial-whatsapp">API oficial e a não oficial do WhatsApp</a>.</p>
+  </div>
+</section>
+
+<!-- 5. PRAZO -->
+<section id="prazo" class="alt">
+  <div class="section-header centered">
+    <div class="section-tag">Prazo</div>
+    <h2 class="section-title">Quanto tempo leva para o time usar</h2>
+  </div>
+  <div class="bloco-texto">
+    <p>Montar a plataforma é rápido: em cerca de uma semana ela está pronta.</p>
+    <p>O que leva mais tempo é treinar o time, e isso depende do tamanho dele. Uma empresa com 3 vendedores, em média, em 30 dias já está usando o melhor da plataforma.</p>
+  </div>
+</section>
+
+<!-- 6. GRÁTIS -->
+<section id="gratis">
+  <div class="section-header centered">
+    <div class="section-tag">Grátis</div>
+    <h2 class="section-title">Existe CRM grátis para WhatsApp?</h2>
+  </div>
+  <div class="bloco-texto">
+    <p>Eu não conheço uma boa plataforma gratuita para isso. Um CRM organiza a sua venda, e isso tem valor.</p>
+    <p>O WhatsApp, em tese, é gratuito. A pergunta certa é outra: qual é a diferença entre vender só pelo WhatsApp e vender com um CRM conversacional como a Kommo? A diferença são os 3 erros lá de cima.</p>
+  </div>
+</section>
+
+<!-- 7. HONESTIDADE -->
+<section id="honestidade" class="alt">
+  <div class="section-header centered">
+    <div class="section-tag">Honestidade</div>
+    <h2 class="section-title">Quando nenhum CRM vai funcionar</h2>
+  </div>
+  <div class="bloco-texto">
+    <p>A Kommo não é uma boa escolha se quem vai usar não tiver comprometimento. E isso vale para qualquer plataforma.</p>
+    <p>Um sistema precisa de rotina, de dados, de informação e de consistência. Sem isso, nenhum CRM funciona.</p>
+    <p>Pela minha experiência, o problema nunca está na plataforma. Está na pessoa que não sabe usar ou que não quer aprender.</p>
+    <p>Veja também <a class="link-texto" href="/kommo-crm">quando a Kommo não é a melhor escolha</a>.</p>
+  </div>
+</section>
+
+<!-- 8. O QUE EU MAIS OUÇO -->
+<section id="frases">
+  <div class="section-header centered">
+    <div class="section-tag">O que eu mais ouço</div>
+    <h2 class="section-title">As frases que escuto antes de um cliente fechar</h2>
+  </div>
+  <ul class="frases-grid" style="list-style:none;">
+    <li class="frase-card">"O meu tráfego não funciona e eu quero saber por quê."</li>
+    <li class="frase-card">"Eu não sei o que o meu vendedor está fazendo."</li>
+    <li class="frase-card">"Eu não sei quantas pessoas me respondem por dia."</li>
+    <li class="frase-card">"Eu não sei quantos orçamentos foram passados."</li>
+    <li class="frase-card">"Eu não sei como está o atendimento de quem já comprou comigo."</li>
+    <li class="frase-card">"Eu não dou conta de atender tudo, por isso preciso de automação."</li>
+  </ul>
+  <p class="ocv-fecho">Todas têm a mesma raiz: falta de visão sobre a operação. É isso que um CRM bem implementado entrega.</p>
+</section>
+
+<!-- 9. QUEM ESCREVE -->
+<section id="quem-escreve" class="alt">
+  <div class="section-header centered">
+    <div class="section-tag">Quem escreve</div>
+    <h2 class="section-title">Quem está por trás deste guia</h2>
+  </div>
+  <div class="bloco-texto">
+    <p>Sou Marco Cordeiro, <a class="link-texto" href="/parceiro-kommo">Partner Gold Kommo</a>. Já estruturei a operação comercial de mais de 300 empresas que vendem pelo WhatsApp. <a class="link-texto" href="/sobre">Conheça a minha trajetória</a>.</p>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta">
+  <h2 class="section-title">Quer enxergar a sua operação?</h2>
+  <p class="cta-texto">Me conta como você vende hoje pelo WhatsApp. Eu te digo por onde começar.</p>
+  <a class="btn-primary" href={linkWhatsApp} data-cta="whatsapp" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.048 23.617a.5.5 0 0 0 .614.63l5.998-1.572A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.372l-.358-.213-3.712.974.99-3.617-.234-.373A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>
+    Falar com o Marco no WhatsApp
+  </a>
+</section>
+
+<!-- FOOTER -->
+<Rodape atual="/crm-para-whatsapp" />
+
+<!-- WHATSAPP FLOAT -->
+<WhatsApp mensagem={mensagem} />
+
+<script src="cookie-banner.js" defer></script>
+
+</body>
+</html>
